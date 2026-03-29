@@ -1,3 +1,4 @@
+@use './variables' as *;
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -9,7 +10,18 @@
   cursor: pointer;
 }
 
-@mixin glass {
-//   background: rgba(15, 23, 42, 0.6);
-//   backdrop-filter: blur(10px);
+
+@mixin box-shadow {
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@mixin fixed-btn($border-color, $color, $bg-color) {
+  display: none;
+  @include button-reset;
+  position: fixed;
+  border-radius: $circle-radius;
+  z-index: 3;
+  border: 1px solid $border-color;
+  color: $color;
+  background-color: $bg-color;
 }

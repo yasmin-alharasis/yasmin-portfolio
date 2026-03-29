@@ -2,12 +2,13 @@
 @use './variables' as *;
 
 body.dark {
-  --color-bg: #0f172a;
+  --color-bg: #000614;
   --color-text: #e2e8f0;
   --color-nav-bg: #000000cc;
   --color-nav-icon: #{$light};
   --color-nav-icon-hover: #{$dark-gray};
-  --color-active-color: #3b52ff33;
+  --color-active-color: #0f172a;
+  --color-active-border: #1d4ed8;
 }
 
 body.light {
@@ -17,4 +18,5 @@ body.light {
   --color-nav-icon: #{$dark};
   --color-nav-icon-hover: #{$light-gray};
   --color-active-color: #689df833;
+  --color-active-border: #b6d3f9;
 }

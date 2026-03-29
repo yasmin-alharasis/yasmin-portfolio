@@ -11,7 +11,7 @@ import { faHotjar } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
-// إضافة الأيقونات للمكتبة
+
 library.add(faHome, faUser, faCode, faHotjar, faStar, faEnvelope, faMoon, faSun)
 
 const app = createApp(App)

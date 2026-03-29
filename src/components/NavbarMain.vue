@@ -30,23 +30,25 @@
         <span>Contact</span>
       </li>
     </ul>
-    <button class="btn" @click="toggleTheme">
-      <font-awesome-icon :icon="theme == 'dark' ? ['far', 'moon'] : ['far', 'sun']" />
-    </button>
+    <!-- desktop -->
+    <ThemeButton variant="desktop" :theme="theme" @toggle="toggleTheme" />
   </nav>
   <div class="overlay" v-if="isOpen" @click="toggleMenu"></div>
   <button class="menu-btn" @click="toggleMenu">
     <span v-if="isOpen">✕</span><span v-else>☰</span>
   </button>
+  <!-- mobile -->
+  <ThemeButton variant="mobile" :theme="theme" @toggle="toggleTheme" />
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
+import ThemeButton from "@/components/ThemeButton.vue";
 const isOpen = ref(false);
 const theme = ref("dark");
 
 // Load saved theme
 onMounted(() => {
-  const saved = localStorage.getItem("theme")|| "dark";
+  const saved = localStorage.getItem("theme") || "dark";
   if (saved) theme.value = saved;
   document.body.classList.add(saved);
 });
