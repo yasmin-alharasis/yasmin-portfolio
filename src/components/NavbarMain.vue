@@ -1,5 +1,5 @@
 <template>
-  <nav class="sidebar" :class="{ open: isOpen }">
+  <nav class="navbar" :class="{ open: isOpen }">
     <div class="logo">
       <span class="full">Yasmin Harasis</span>
       <span class="short">YH</span>
@@ -30,11 +30,8 @@
         <span>Contact</span>
       </li>
     </ul>
-    <button
-      :class="['btn', isDark ? 'dark-icon' : 'light-icon']"
-      @click="isDark = !isDark"
-    >
-      <font-awesome-icon :icon="isDark ? ['far', 'moon'] : ['far', 'sun']" />
+    <button class="btn" @click="toggleTheme">
+      <font-awesome-icon :icon="theme == 'dark' ? ['far', 'moon'] : ['far', 'sun']" />
     </button>
   </nav>
   <div class="overlay" v-if="isOpen" @click="toggleMenu"></div>
@@ -43,10 +40,23 @@
   </button>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 const isOpen = ref(false);
-const isDark = ref(true);
+const theme = ref("dark");
 
+// Load saved theme
+onMounted(() => {
+  const saved = localStorage.getItem("theme")|| "dark";
+  if (saved) theme.value = saved;
+  document.body.classList.add(saved);
+});
+
+const toggleTheme = () => {
+  theme.value = theme.value == "dark" ? "light" : "dark";
+  document.body.classList.remove("dark", "light");
+  document.body.classList.add(theme.value);
+  localStorage.setItem("theme", theme.value);
+};
 const toggleMenu = () => {
   isOpen.value = !isOpen.value;
 };

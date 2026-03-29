@@ -1,0 +1,20 @@
+
+@use './variables' as *;
+
+body.dark {
+  --color-bg: #0f172a;
+  --color-text: #e2e8f0;
+  --color-nav-bg: #000000cc;
+  --color-nav-icon: #{$light};
+  --color-nav-icon-hover: #{$dark-gray};
+  --color-active-color: #3b52ff33;
+}
+
+body.light {
+  --color-bg: #f8fafc;
+  --color-text: #1f2937;
+  --color-nav-bg: #ffffffcc;
+  --color-nav-icon: #{$dark};
+  --color-nav-icon-hover: #{$light-gray};
+  --color-active-color: #689df833;
+}
