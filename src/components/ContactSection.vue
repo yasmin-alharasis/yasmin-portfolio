@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="contact" id="contact">
     <h2>Contact Me</h2>
 
     <input placeholder="Name" />

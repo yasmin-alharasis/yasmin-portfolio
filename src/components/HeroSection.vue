@@ -1,12 +1,14 @@
 <template>
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero_container">
       <span class="badge" role="status">
         <font-awesome-icon :icon="['far', 'star']" class="star" />
         Available for opportunities</span
       >
       <h1 class="name">yasmin harasis</h1>
-      <h2 class="subtitle">Turning ideas into scalable, <span>high-quality software.</span> </h2>
+      <h2 class="subtitle">
+        Turning ideas into scalable, <span>high-quality software.</span>
+      </h2>
       <p class="description">
         Full-stack software engineer designing and developing modern, scalable
         applications with clean architecture and exceptional user experiences.

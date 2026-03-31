@@ -5,27 +5,33 @@
       <span class="short">YH</span>
     </div>
     <ul class="menu">
-      <li class="active">
+      <li :class="{ active: activeSection === 'hero' }" @click="scrollTo('hero')">
         <font-awesome-icon :icon="['far', 'home']" />
         <span>Home</span>
       </li>
-      <li>
+      <li :class="{ active: activeSection === 'about' }" @click="scrollTo('about')">
         <font-awesome-icon :icon="['far', 'user']" />
         <span>About</span>
       </li>
-      <li>
+      <li :class="{ active: activeSection === 'projects' }" @click="scrollTo('projects')">
         <font-awesome-icon icon="code" />
         <span>Projects</span>
       </li>
-      <li>
+      <li
+        :class="{ active: activeSection === 'experience' }"
+        @click="scrollTo('experience')"
+      >
         <font-awesome-icon :icon="['fab', 'hotjar']" />
         <span>Experience</span>
       </li>
-      <li>
+      <li
+        :class="{ active: activeSection === 'testimonials' }"
+        @click="scrollTo('testimonials')"
+      >
         <font-awesome-icon :icon="['far', 'star']" />
         <span>Testimonials</span>
       </li>
-      <li>
+      <li :class="{ active: activeSection === 'contact' }" @click="scrollTo('contact')">
         <font-awesome-icon :icon="['far', 'envelope']" />
         <span>Contact</span>
       </li>
@@ -43,8 +49,12 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import ThemeButton from "@/components/ThemeButton.vue";
+import { useScroll } from "@/composables/useScroll";
+import { useActiveSection } from "@/composables/useActiveSection";
 const isOpen = ref(false);
 const theme = ref("dark");
+const { activeSection } = useActiveSection();
+const { scrollTo } = useScroll();
 
 // Load saved theme
 onMounted(() => {
