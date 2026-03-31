@@ -10,7 +10,6 @@
   cursor: pointer;
 }
 
-
 @mixin box-shadow {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -24,4 +23,13 @@
   border: 1px solid $border-color;
   color: $color;
   background-color: $bg-color;
+}
+@mixin main-btn($color, $bg) {
+  color: $color;
+  background-color: $bg;
+  border-radius: 8px;
+  padding: 14px 35px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
 }

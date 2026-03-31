@@ -1,4 +1,3 @@
-
 @use './variables' as *;
 
 body.dark {
@@ -9,6 +8,10 @@ body.dark {
   --color-nav-icon-hover: #{$dark-gray};
   --color-active-color: #0f172a;
   --color-active-border: #1d4ed8;
+  --color-badge-bg: #ffffff;
+  --color-badge-text: #000000cc;
+  --color-badge-border: #000000cc;
+  --color-main-btn-hover: #{$dark-gray};
 }
 
 body.light {
@@ -19,4 +22,8 @@ body.light {
   --color-nav-icon-hover: #{$light-gray};
   --color-active-color: #689df833;
   --color-active-border: #b6d3f9;
+  --color-badge-bg: #7c3aed38;
+  --color-badge-text: #7c3aed;
+  --color-badge-border: #7c3aed7d;
+  --color-main-btn-hover: #000000cc;
 }

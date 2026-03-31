@@ -37,7 +37,7 @@
     border-radius: $min-radius;
     cursor: pointer;
     transition: 0.3s;
-
+    font-weight: lighter;
     span {
       transition: 0.3s;
     }
@@ -51,7 +51,7 @@
       background: var(--color-active-color);
       color: var(--color-text);
       border: 1px solid var(--color-active-border);
-      font-weight: 600;
+      font-weight: bold;
     }
   }
 }
