@@ -12,6 +12,7 @@ body.dark {
   --color-badge-text: #000000cc;
   --color-badge-border: #000000cc;
   --color-main-btn-hover: #{$dark-gray};
+  --scrollbar-thumb-hover: #7c3aedef;
 }
 
 body.light {
@@ -26,4 +27,5 @@ body.light {
   --color-badge-text: #7c3aed;
   --color-badge-border: #7c3aed7d;
   --color-main-btn-hover: #000000cc;
+  --scrollbar-thumb-hover: #7c3aedef;
 }
