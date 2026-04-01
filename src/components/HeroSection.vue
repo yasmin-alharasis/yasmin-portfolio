@@ -14,11 +14,13 @@
         applications with clean architecture and exceptional user experiences.
       </p>
       <div class="actions">
-        <button class="actions_primary">
+        <button class="actions_primary" @click="scrollTo('projects')">
           View My Work
           <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon" />
         </button>
-        <button class="actions_secondary">Get In Touch</button>
+        <button class="actions_secondary" @click="scrollTo('contact')">
+          Get In Touch
+        </button>
       </div>
       <div class="social-links">
         <span class="connect">Connect with me:</span>
@@ -41,3 +43,7 @@
     </div>
   </section>
 </template>
+<script setup>
+import { useScroll } from "@/composables/useScroll";
+const { scrollTo } = useScroll();
+</script>
