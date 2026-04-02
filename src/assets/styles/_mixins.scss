@@ -33,3 +33,17 @@
   cursor: pointer;
   transition: 0.3s;
 }
+@mixin main_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@mixin main_container {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;;
+  justify-content: center;
+  @include flex-column;
+}

@@ -8,10 +8,12 @@ import Contact from "../components/ContactSection.vue";
 </script>
 
 <template>
-  <Hero />
-  <About />
-  <Projects />
-  <Experience />
-  <Testimonials />
-  <Contact />
+  <div class="wrapper">
+    <Hero />
+    <About />
+    <Projects />
+    <Experience />
+    <Testimonials />
+    <Contact />
+  </div>
 </template>

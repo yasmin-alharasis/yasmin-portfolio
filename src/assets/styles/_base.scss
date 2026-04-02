@@ -17,6 +17,9 @@ body {
   color: var(--color-text);
   min-height: 100vh;
 }
+.wrapper {
+  @include main_wrapper;
+}
 
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
