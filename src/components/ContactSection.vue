@@ -1,11 +1,9 @@
 <template>
   <section class="contact" id="contact">
-    <h2>Contact Me</h2>
-
-    <input placeholder="Name" />
-    <input placeholder="Email" />
-    <textarea placeholder="Message"></textarea>
-
-    <button>Send</button>
+    <SectionBadge :badgeTitle="badgeTitle" />
   </section>
 </template>
+<script setup>
+import SectionBadge from "./Badge.vue";
+const badgeTitle = "get in touch";
+</script>

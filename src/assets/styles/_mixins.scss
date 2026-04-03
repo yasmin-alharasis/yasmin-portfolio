@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './media' as *;
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -37,13 +38,32 @@
   display: flex;
   flex-direction: column;
   width: 85%;
-  max-width: 900px;
-  margin: 0 auto;
+  margin-left: auto;
+  @include mobile {
+    margin: 0 auto;
+  }
 }
-@mixin main_container {
+@mixin main_container(
+  $padding-desktop: 80px,
+  $padding-tablet: 50px,
+  $padding-mobile: 10px,
+  $gap-desktop: 15px,
+  $gap-mobile: 10px
+) {
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;;
+  align-items: center;
   justify-content: center;
+  gap: $gap-desktop;
   @include flex-column;
+  padding: $padding-desktop;
+
+  @include tablet {
+    padding: $padding-tablet;
+  }
+
+  @include mobile {
+    padding: $padding-mobile;
+    gap: $gap-mobile;
+  }
 }

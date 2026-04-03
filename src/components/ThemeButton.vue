@@ -1,16 +1,13 @@
+<template>
+  <button :class="['theme-btn', variant]" @click="$emit('toggle')">
+    <font-awesome-icon :icon="theme === 'dark' ? ['far', 'moon'] : ['far', 'sun']" />
+  </button>
+</template>
 <script setup>
 defineProps({
   variant: String, // mobile | desktop
-  theme: String
-})
+  theme: String,
+});
 
-defineEmits(['toggle'])
+defineEmits(["toggle"]);
 </script>
-
-<template>
-  <button :class="['theme-btn', variant]" @click="$emit('toggle')">
-    <font-awesome-icon
-      :icon="theme === 'dark' ? ['far','moon'] : ['far','sun']"
-    />
-  </button>
-</template>

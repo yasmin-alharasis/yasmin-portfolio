@@ -1,9 +1,6 @@
 <template>
   <section class="hero" id="hero">
-    <span class="badge" role="status">
-      <font-awesome-icon :icon="['far', 'star']" class="star" />
-      Available for opportunities</span
-    >
+    <SectionBadge :badgeTitle="badgeTitle" variant="custom"/>
     <h1 class="name">yasmin harasis</h1>
     <h2 class="subtitle">
       Turning ideas into scalable, <span>high-quality software.</span>
@@ -41,5 +38,7 @@
 </template>
 <script setup>
 import { useScroll } from "@/composables/useScroll";
+import SectionBadge from "./Badge.vue";
 const { scrollTo } = useScroll();
+const badgeTitle = "available for opportunities";
 </script>

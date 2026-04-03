@@ -1,11 +1,9 @@
 <template>
   <section class="experience" id="experience">
-    <h2>Tech Stack</h2>
-    <div class="experience">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-      <span>Vue</span>
-    </div>
+    <SectionBadge :badgeTitle="badgeTitle" />
   </section>
 </template>
+<script setup>
+import SectionBadge from "./Badge.vue";
+const badgeTitle = "career journey";
+</script>
