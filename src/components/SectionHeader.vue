@@ -23,12 +23,12 @@ defineProps({
 
 header {
   @include flex-column;
-  width: inherit;
   align-items: center;
   gap: 15px;
   .subtitle {
     font-size: 2rem;
     color: var(--color-text);
+    text-transform: capitalize;
   }
   .description {
     font-size: 1.3rem;

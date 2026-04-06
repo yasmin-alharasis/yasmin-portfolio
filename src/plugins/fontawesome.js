@@ -7,17 +7,21 @@ import {
     faStar,
     faEnvelope,
     faMoon,
-    faSun
+    faSun,
+    faCircleCheck,
+    faClock
 } from '@fortawesome/free-regular-svg-icons'
 // Solid icons
 import {
     faCode,
-    faArrowRight
+    faArrowRight,
+    faAward,
+    faMugHot,
+    faScrewdriverWrench
 } from '@fortawesome/free-solid-svg-icons'
 
 // Brand icons
 import { faHotjar, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-
 library.add(
     faHome,
     faUser,
@@ -29,7 +33,12 @@ library.add(
     faArrowRight,
     faHotjar,
     faGithub,
-    faLinkedin
+    faLinkedin,
+    faCircleCheck,
+    faAward,
+     faScrewdriverWrench,
+    faMugHot,
+    faClock
 )
 
 export default FontAwesomeIcon
