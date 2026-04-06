@@ -1,10 +1,42 @@
 @use './variables' as *;
 @use './media' as *;
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
 
+@mixin flex($direction: row, $justify: null, $align: null, $gap: null, $wrap: null) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $justify != null {
+    justify-content: $justify;
+  }
+
+  @if $align != null {
+    align-items: $align;
+  }
+
+  @if $gap != null {
+    gap: $gap;
+  }
+
+  @if $wrap != null {
+    flex-wrap: $wrap;
+  }
+}
+@mixin grid($columns: 1fr, $justify: null, $align: null, $gap: null) {
+  display: grid;
+  grid-template-columns: $columns;
+
+  @if $justify != null {
+    justify-content: $justify;
+  }
+
+  @if $align != null {
+    align-items: $align;
+  }
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
 @mixin button-reset {
   background: none;
   border: none;
@@ -35,8 +67,7 @@
   transition: 0.3s;
 }
 @mixin main_wrapper {
-  display: flex;
-  flex-direction: column;
+  @include flex($direction: column);
   width: 85%;
   margin-left: auto;
   @include mobile {
@@ -47,16 +78,12 @@
   $padding-desktop: 80px,
   $padding-tablet: 20px,
   $padding-mobile: 10px,
-  $gap-desktop: 15px,
-  $gap-mobile: 10px
+  $gap: 15px,
+  $align: center
 ) {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $gap-desktop;
-  @include flex-column;
+  @include flex($direction: column, $align: $align, $justify: center, $gap: $gap);
   padding: $padding-desktop;
 
   @include tablet {
@@ -65,17 +92,15 @@
 
   @include mobile {
     padding: $padding-mobile;
-    gap: $gap-mobile;
+    @include flex($direction: column, $align: $align, $justify: center, $gap: 10px);
   }
 }
-@mixin card {
+@mixin card($gap: null, $justify: null) {
   border: 1px solid $light-gray;
   border-radius: 10px;
   padding: 10px;
   margin: 15px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex($direction: column, $align: center, $gap: $gap, $justify: $justify);
   transition: transform 0.3s ease;
   .icon {
     color: rgba($primary, 0.8);

@@ -22,9 +22,7 @@ defineProps({
 @use "../assets/styles/_mixins" as *;
 
 header {
-  @include flex-column;
-  align-items: center;
-  gap: 15px;
+  @include flex($direction: column, $gap: 15px, $align: center);
   .subtitle {
     font-size: 2rem;
     color: var(--color-text);
@@ -36,8 +34,8 @@ header {
     line-height: 1.6;
     max-width: 750px;
     text-align: center;
-    &::first-letter{
-        text-transform: capitalize;
+    &::first-letter {
+      text-transform: capitalize;
     }
   }
   // Tablet

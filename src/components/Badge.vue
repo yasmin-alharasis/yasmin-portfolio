@@ -16,7 +16,7 @@ defineProps({
 </script>
 <style scoped lang="scss">
 @use "../assets/styles/_variables" as *;
-
+@use "../assets/styles/_mixins" as *;
 .badge {
   background-color: rgba($primary, 0.2);
   color: $primary;
@@ -24,10 +24,7 @@ defineProps({
   padding: 8px 20px;
   width: fit-content;
   margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
+  @include flex($gap: 5px, $justify: center, $align: center);
 }
 .badge-border {
   background-color: var(--color-badge-bg);
