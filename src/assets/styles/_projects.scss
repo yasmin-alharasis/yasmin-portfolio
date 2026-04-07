@@ -6,7 +6,7 @@
   .container {
     width: 100%;
     .bar {
-      @include flex($gap: 10px, $justify: space-between);
+      @include flex($gap: 10px, $justify: space-between, $wrap: wrap);
     }
     .filter-bar,
     .layout {
@@ -16,16 +16,17 @@
 
     .filter-btn,
     .layout-btn {
+      @include button-reset;
       padding: 10px 15px;
-      border: 1px solid $light-gray;
       text-transform: capitalize;
-      border-radius: 10px;
-      cursor: pointer;
-      background: none;
       font-size: 14px;
       transition: 0.2s;
+      border: 1px solid $light-gray;
+      border-radius: 10px;
     }
-
+    .layout-btn {
+      padding: 3px 5px;
+    }
     .filter-btn.active,
     .layout-btn.active {
       background: $primary;
@@ -41,5 +42,10 @@
   }
   // Mobile
   @include mobile {
+    .container {
+      .bar {
+        @include flex($gap: 10px, $justify: center, $wrap: wrap);
+      }
+    }
   }
 }

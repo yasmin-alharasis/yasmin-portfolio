@@ -3,7 +3,7 @@
     <font-awesome-icon
       :icon="['far', 'star']"
       :class="{ star: variant === 'custom' }"
-      :size="variant === 'custom' ? 'md' : 'sm'"
+      :size="variant === 'custom' ? 'lg' : 'sm'"
     />
     <span class="badge-text">{{ badgeTitle }}</span>
   </span>

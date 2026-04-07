@@ -37,41 +37,16 @@
     gap: $gap;
   }
 }
-@mixin button-reset {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-@mixin box-shadow {
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-@mixin fixed-btn($border-color, $color, $bg-color) {
-  display: none;
-  @include button-reset;
-  position: fixed;
-  border-radius: $circle-radius;
-  z-index: 3;
-  border: 1px solid $border-color;
-  color: $color;
-  background-color: $bg-color;
-}
-@mixin main-btn($color, $bg) {
-  color: $color;
-  background-color: $bg;
-  border-radius: 8px;
-  padding: 14px 35px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
 @mixin main_wrapper {
   @include flex($direction: column);
   width: 85%;
   margin-left: auto;
+  @include tablet {
+    width: 90%;
+  }
   @include mobile {
     margin: 0 auto;
+    width: 90%;
   }
 }
 @mixin main_container(
@@ -113,4 +88,31 @@
     @include box-shadow;
     transform: scale(1.04);
   }
+}
+@mixin box-shadow {
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+}
+@mixin button-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+@mixin fixed-btn($border-color, $color, $bg-color) {
+  display: none;
+  @include button-reset;
+  position: fixed;
+  z-index: 3;
+  border: 1px solid $border-color;
+  border-radius: $circle-radius;
+  color: $color;
+  background-color: $bg-color;
+}
+@mixin main-btn($color, $bg) {
+  padding: 14px 35px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px;
+  color: $color;
+  background-color: $bg;
 }

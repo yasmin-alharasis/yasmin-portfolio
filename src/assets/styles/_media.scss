@@ -2,14 +2,13 @@ $mobile: 767px;
 $tablet-min: 768px;
 $tablet-max: 1275px;
 
-@mixin mobile {
-  @media (max-width: $mobile) {
+@mixin tablet {
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
     @content;
   }
 }
-
-@mixin tablet {
-  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+@mixin mobile {
+  @media (max-width: $mobile) {
     @content;
   }
 }
