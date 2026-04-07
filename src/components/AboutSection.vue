@@ -95,7 +95,7 @@ const technologiesList = [
 
   { name: "Firebase", type: "Databases", percentage: 90, visible: true },
   { name: "MongoDB", type: "Databases", percentage: 70, visible: true },
-  { name: "PostgreSQL", type: "Databases", percentage: 80, visible: true },
+  { name: "PostgreSQL", type: "Databases", percentage: 60, visible: true },
 ];
 const visibleTechnologies = computed(() =>
   technologiesList.filter((item) => item.visible)

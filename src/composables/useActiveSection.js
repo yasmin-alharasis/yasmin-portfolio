@@ -8,7 +8,7 @@ export const useActiveSection = () => {
   onMounted(() => {
     setTimeout(() => {
       const sections = document.querySelectorAll("section");
-
+      
       observer = new IntersectionObserver(//أداة تراقب العناصر إذا دخلت الشاشة أو لا
         (entries) => {//كل سكشن له entry
           entries.forEach((entry) => {
@@ -18,7 +18,7 @@ export const useActiveSection = () => {
           });
         },
         {
-          threshold: 0.6, // لازم 60% من السكشن يكون ظاهر
+          rootMargin: "-30% 0px -50% 0px", //يتفعل لما يوصل منتصف الشاشة تقريباً
         }
       );
 
