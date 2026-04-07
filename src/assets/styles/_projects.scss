@@ -36,6 +36,17 @@
     .layout-btn:hover {
       background: $light-gray;
     }
+    .projects.flex {
+      @include flex($direction: column, $gap: 10px, $align: center);
+    }
+    .projects.grid {
+      @include grid($columns: repeat(3, 1fr), $gap: 20px);
+    }
+    .projects {
+      .card {
+        @include card;
+      }
+    }
   }
   // Tablet
   @include tablet {
