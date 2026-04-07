@@ -70,12 +70,11 @@
     @include flex($direction: column, $align: $align, $justify: center, $gap: 10px);
   }
 }
-@mixin card($gap: null, $justify: null) {
+@mixin card {
   border: 1px solid $light-gray;
   border-radius: 10px;
   padding: 10px;
   margin: 15px 0;
-  @include flex($direction: column, $align: center, $gap: $gap, $justify: $justify);
   transition: transform 0.3s ease;
   .icon {
     color: rgba($primary, 0.8);
