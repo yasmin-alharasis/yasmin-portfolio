@@ -25,16 +25,11 @@
     margin: 20px 0px;
     &_primary {
       @include main-btn($light, $primary);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: none;
       @include box-shadow;
       .icon {
         transition: transform 0.3s ease;
       }
       &:hover {
-        background: rgba($primary, 0.8);
         box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
         .icon {
           transform: translateX(6px);
@@ -42,12 +37,7 @@
       }
     }
     &_secondary {
-      @include main-btn(var(--color-text), transparent);
-      border: 2px solid var(--color-text);
-      &:hover {
-        background-color: var(--color-main-btn-hover);
-        color: $light;
-      }
+      @include secandary-btn(var(--color-text), transparent);
     }
   }
   .social-links {
@@ -56,16 +46,7 @@
       margin-right: 20px;
     }
     .social-link {
-      font-size: 18px;
-      color: $secondary;
-      transition:
-        color 0.3s ease,
-        transform 0.3s ease;
-    }
-
-    .social-link:hover {
-      color: var(--color-main-btn-hover);
-      transform: translateY(-2px);
+      @include social-link;
     }
   }
   // Tablet

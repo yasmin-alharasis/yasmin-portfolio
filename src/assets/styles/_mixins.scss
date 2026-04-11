@@ -115,7 +115,24 @@
   color: $color;
   background-color: $bg-color;
 }
-@mixin main-btn($color, $bg) {
+@mixin main-btn($color, $bg, $fs: 1.1rem, $p: 14px 35px) {
+  padding: $p;
+  font-size: $fs;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px;
+  color: $color;
+  background-color: $bg;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  text-transform: capitalize;
+  &:hover {
+    background: rgba($primary, 0.8);
+  }
+}
+@mixin secandary-btn($color, $bg) {
   padding: 14px 35px;
   font-size: 1.1rem;
   cursor: pointer;
@@ -123,4 +140,21 @@
   border-radius: 8px;
   color: $color;
   background-color: $bg;
+  border: 2px solid var(--color-text);
+  &:hover {
+    background-color: var(--color-main-btn-hover);
+    color: $light;
+  }
+}
+@mixin social-link {
+  font-size: 18px;
+  color: $secondary;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    color: var(--color-main-btn-hover);
+    transform: translateY(-2px);
+  }
 }

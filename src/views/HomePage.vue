@@ -1,7 +1,7 @@
 <script setup>
 import Hero from "../components/HeroSection.vue";
 import About from "../components/AboutSection.vue";
-import Projects from "../components/ProjectsSection..vue";
+import Projects from "../components/ProjectsSection.vue";
 import Experience from "../components/ExperienceSection.vue";
 import Testimonials from "@/components/TestimonialsSection.vue";
 import Contact from "../components/ContactSection.vue";

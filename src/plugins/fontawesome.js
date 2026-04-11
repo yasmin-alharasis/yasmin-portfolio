@@ -25,7 +25,7 @@ import {
     faArrowUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons'
 // Brand icons
-import { faHotjar, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faHotjar, faGithub, faLinkedin, faSquareGithub } from '@fortawesome/free-brands-svg-icons'
 library.add(
     faHome,
     faUser,
@@ -46,8 +46,8 @@ library.add(
     faList,
     faTableCells,
     faArrowUpRightFromSquare,
-    faCalendar
-
+    faCalendar,
+    faSquareGithub
 )
 
 export default FontAwesomeIcon

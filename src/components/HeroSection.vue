@@ -11,7 +11,7 @@
     </p>
     <div class="actions">
       <button class="actions_primary" @click="scrollTo('projects')">
-        View My Work
+        view my work
         <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon" />
       </button>
       <button class="actions_secondary" @click="scrollTo('contact')">Get In Touch</button>

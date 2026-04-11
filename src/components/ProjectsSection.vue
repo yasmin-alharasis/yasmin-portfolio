@@ -33,43 +33,11 @@
         </div>
       </div>
       <div :class="['projects-list', activeLayout]">
-        <div v-for="project in visibleProjects" :key="project['id']" class="card">
-          <div class="project_img">
-            <img :src="project['img']" :alt="project['name'] + ' project image'" />
-          </div>
-          <div class="project_content">
-            <div class="line">
-              <h2 class="name">{{ project["name"] }}</h2>
-              <small class="time">
-                <font-awesome-icon :icon="['far', 'calendar']" />
-                {{ project["year"] }}</small
-              >
-            </div>
-            <div class="main">
-              <p class="description">{{ project["description"] }}</p>
-              <div class="technology">
-                <ul v-for="techno in project['technologies']" :key="techno">
-                  <li>{{ techno }}</li>
-                </ul>
-              </div>
-            </div>
-            <div class="line btn">
-              <a :href="project['demoLink']" target="_blank" class="demo">
-                <font-awesome-icon
-                  :icon="['fas', 'arrow-up-right-from-square']"
-                  size="2xl"
-                />
-                live demo
-              </a>
-              <button class="actions_primary" @click="scrollTo('projects')">
-                BadgeWork
-                <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon" />
-              </button>
-              <small class="status">{{ project["status"] }}</small>
-            </div>
-          </div>
-        </div>
-        <div v-if="visibleProjects.length === 0">No projects found</div>
+        <ProjectCard
+          v-for="project in visibleProjects"
+          :key="project.id"
+          :project="project"
+        />
       </div>
     </div>
   </section>
@@ -77,6 +45,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import SectionHeader from "./SectionHeader.vue";
+import ProjectCard from "./ProjectCard.vue";
 const activeFilter = ref("all");
 const activeLayout = ref("grid");
 const badgeTitle = "featured work";
@@ -97,10 +66,11 @@ const projects = ref([
     img:
       "https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038=",
     description:
-      "An AI-powered productivity tool that serves as your personal 'second brain.' It remembers context, connects your notes, tracks habits, and plans your day",
+      "An AI-powered productivity tool that serves as your personal 'second brain.' It remembers context, connects your notes, tracks habits, and plans your day AI daily planning, connected thinking like a neural network, and human-first intelligence that learns your patterns.",
     technologies: ["react", "next.js", "tailwind css", "typescript"],
     demoLink: "https://bondi-website-bootstrap.netlify.app/",
-    status: "active",
+    githubLink: "https://bondi-website-bootstrap.netlify.app/",
+    status: "​deployment",
   },
   {
     id: 2,
@@ -114,6 +84,7 @@ const projects = ref([
       "A dynamic, visually engaging company website for Gryphon Academy featuring modern animations and responsive design. Leveraged Tailwind CSS, AOS, GSAP, and Three.js for high-performance animations and ensured full responsiveness across all devices.",
     technologies: ["react", "GSAP", "tailwind css", "three.js"],
     demoLink: "https://crudjs-product-management-system.netlify.app/",
+    githubLink: "",
     status: "live",
   },
   {
@@ -128,6 +99,7 @@ const projects = ref([
       "A modern and interactive concept website for PlayStation, featuring product displays, ergonomic controller highlights, and an engaging shopping experience.",
     technologies: ["react", "vite", "tailwind css", "javascript"],
     demoLink: "https://adidas-running-landing.netlify.app/",
+    githubLink: "",
     status: "active",
   },
   {
@@ -142,6 +114,7 @@ const projects = ref([
       "A comprehensive CRM system built for Gryphon Academy with lead tracking, pipeline management, role-based authentication, and audit logging. Features real-time",
     technologies: ["react", "firebase", "tailwind css", "three.js"],
     demoLink: "https://dark-admin-dashboard.netlify.app/",
+    githubLink: "",
     status: "production",
   },
   {
@@ -156,6 +129,7 @@ const projects = ref([
       "A complete HR attendance management system built with Node.js and React.js, deployed on Render for Synergy Sphere. Improved site performance from 20s to 2s load",
     technologies: ["react", "node.js", "render", "performance optimization"],
     demoLink: "https://trycoffee.netlify.app/",
+    githubLink: "https://github.com/...",
     status: "production",
   },
   {
@@ -170,6 +144,7 @@ const projects = ref([
       "A premium vehicle-washing platform that brings professional car and bike cleaning services directly to your doorstep. Emphasizes eco-friendly washing, convenienc",
     technologies: ["react", "vite", "tailwind css", "emailjs"],
     demoLink: "https://trycoffee.netlify.app/",
+    githubLink: "",
     status: "active",
   },
 ]);
