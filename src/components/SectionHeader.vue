@@ -1,6 +1,6 @@
 <template>
   <header>
-    <SectionBadge :badgeTitle="badgeTitle" />
+    <Badge :badgeTitle="badgeTitle" />
     <h2 class="subtitle">{{ subtitle }}</h2>
     <p class="description">
       {{ description }}
@@ -8,7 +8,7 @@
   </header>
 </template>
 <script setup>
-import SectionBadge from "./Badge.vue";
+import Badge from "./Badge.vue";
 
 defineProps({
   badgeTitle: String,

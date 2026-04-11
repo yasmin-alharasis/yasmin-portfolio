@@ -18,13 +18,9 @@ defineProps({
 @use "../assets/styles/_variables" as *;
 @use "../assets/styles/_mixins" as *;
 .badge {
-  background-color: rgba($primary, 0.2);
-  color: $primary;
-  border-radius: 25px;
-  padding: 8px 20px;
-  width: fit-content;
+  @include badge($bg: rgba($primary, 0.2), $color: $primary, $br: 25px, $fs: medium);
   margin-bottom: 15px;
-  @include flex($gap: 5px, $justify: center, $align: center);
+  padding: 8px 20px;
 }
 .badge-border {
   background-color: var(--color-badge-bg);

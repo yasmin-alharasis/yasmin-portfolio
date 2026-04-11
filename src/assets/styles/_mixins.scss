@@ -88,6 +88,15 @@
     transform: scale(1.04);
   }
 }
+@mixin badge($bg: transparent, $color, $br: 15px, $fs: small) {
+  @include flex($align: center, $justify: center, $gap: 5px);
+  background-color: $bg;
+  color: $color;
+  border-radius: $br;
+  padding: 5px 10px;
+  text-transform: capitalize;
+  font-size: $fs;
+}
 @mixin box-shadow {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
 }

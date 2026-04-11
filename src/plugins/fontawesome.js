@@ -10,7 +10,9 @@ import {
     faSun,
     faCircleCheck,
     faClock,
+    faCalendar
 } from '@fortawesome/free-regular-svg-icons'
+
 // Solid icons
 import {
     faCode,
@@ -19,9 +21,9 @@ import {
     faMugHot,
     faScrewdriverWrench,
     faList,
-    faTableCells
+    faTableCells,
+    faArrowUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons'
-
 // Brand icons
 import { faHotjar, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 library.add(
@@ -42,7 +44,10 @@ library.add(
     faMugHot,
     faClock,
     faList,
-    faTableCells
+    faTableCells,
+    faArrowUpRightFromSquare,
+    faCalendar
+
 )
 
 export default FontAwesomeIcon
