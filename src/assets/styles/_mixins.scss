@@ -148,7 +148,7 @@
 }
 @mixin social-link {
   font-size: 18px;
-  color: $secondary;
+  color: rgba($secondary,0.4);
   transition:
     color 0.3s ease,
     transform 0.3s ease;

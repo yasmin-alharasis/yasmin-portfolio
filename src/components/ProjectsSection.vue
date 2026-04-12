@@ -39,13 +39,20 @@
           :project="project"
         />
       </div>
+      <div class="working-together">
+        <h2>Interested in working together?</h2>
+        <p>Let's discuss your project and create something amazing together.</p>
+        <button class="primary-btn" @click="scrollTo('contact')">start a project</button>
+      </div>
     </div>
   </section>
 </template>
 <script setup>
 import { ref, computed } from "vue";
+import { useScroll } from "@/composables/useScroll";
 import SectionHeader from "./SectionHeader.vue";
 import ProjectCard from "./ProjectCard.vue";
+const { scrollTo } = useScroll();
 const activeFilter = ref("all");
 const activeLayout = ref("grid");
 const badgeTitle = "featured work";
