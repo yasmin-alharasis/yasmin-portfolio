@@ -71,8 +71,9 @@
   }
 }
 @mixin card {
-  border: 1px solid $light-gray;
+  will-change: transform;
   border-radius: 10px;
+  border: 1px solid $light-gray;
   padding: 10px;
   margin: 15px 0;
   transition: transform 0.3s ease;
@@ -148,7 +149,7 @@
 }
 @mixin social-link {
   font-size: 18px;
-  color: rgba($secondary,0.4);
+  color: rgba($secondary, 0.4);
   transition:
     color 0.3s ease,
     transform 0.3s ease;

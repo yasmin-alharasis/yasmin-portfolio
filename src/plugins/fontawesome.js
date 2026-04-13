@@ -22,7 +22,10 @@ import {
     faScrewdriverWrench,
     faList,
     faTableCells,
-    faArrowUpRightFromSquare
+    faArrowUpRightFromSquare,
+    faBriefcase,
+    faUserGraduate,
+    faLaptopCode
 } from '@fortawesome/free-solid-svg-icons'
 // Brand icons
 import { faHotjar, faGithub, faLinkedin, faSquareGithub } from '@fortawesome/free-brands-svg-icons'
@@ -47,7 +50,10 @@ library.add(
     faTableCells,
     faArrowUpRightFromSquare,
     faCalendar,
-    faSquareGithub
+    faSquareGithub,
+    faBriefcase,
+    faUserGraduate,
+    faLaptopCode
 )
 
 export default FontAwesomeIcon

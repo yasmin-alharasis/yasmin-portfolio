@@ -8,7 +8,7 @@
       <div class="line">
         <h2 class="name">{{ project.name }}</h2>
 
-        <small class="time">
+        <small class="duration">
           <font-awesome-icon :icon="['far', 'calendar']" />
           {{ project.year }}
         </small>
@@ -16,12 +16,7 @@
 
       <div class="main">
         <p class="description">{{ project.description }}</p>
-
-        <ul class="technology">
-          <li v-for="tech in project.technologies" :key="tech">
-            {{ tech }}
-          </li>
-        </ul>
+        <TechnologiesList :technologies="project.technologies" />
       </div>
 
       <div class="line">
@@ -56,6 +51,7 @@
   </div>
 </template>
 <script setup>
+import TechnologiesList from "./TechnologiesList.vue";
 defineProps({
   project: Object,
 });

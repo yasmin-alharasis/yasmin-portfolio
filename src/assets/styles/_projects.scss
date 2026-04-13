@@ -40,7 +40,7 @@
     .projects-list.flex {
       @include flex($direction: column, $gap: 25px, $align: center);
       .card {
-        @include flex($direction: row);
+        @include flex;
         max-width: 800px;
       }
       .project_img {
@@ -82,6 +82,7 @@
         cursor: pointer;
         &:hover {
           transform: translateY(-10px);
+          border: 1px solid rgba($primary, 0.2);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
           .project_img img {
             transform: scale(1.08);
@@ -114,7 +115,7 @@
             margin-bottom: 8px;
             margin: 0;
           }
-          .time {
+          .duration {
             @include badge($bg: rgba($light-gray, 0.3), $color: var(--color-text));
           }
           .description {
@@ -122,14 +123,6 @@
             color: $secondary;
             margin-bottom: 12px;
             line-height: 1.3;
-          }
-          .technology {
-            @include flex($gap: 10px, $wrap: wrap);
-            margin: 15px 0;
-            li {
-              list-style: none;
-              @include badge($bg: rgba($primary, 0.14), $color: $primary);
-            }
           }
           .links {
             @include flex($align: center, $gap: 5px);
