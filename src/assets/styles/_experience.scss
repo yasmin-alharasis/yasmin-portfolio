@@ -40,11 +40,104 @@
   }
   .experience-item {
     @include card;
+    width: 90%;
+    text-transform: capitalize;
+    padding: 20px;
+    .line {
+      @include flex($justify: space-between);
+      margin: 10px 0;
+    }
+    .position {
+      font-size: 1.3rem;
+      font-weight: 550;
+    }
+    .meta {
+      @include flex($gap: 20px);
+      &_icon {
+        margin-right: 5px;
+      }
+    }
+    .role,
+    .meta {
+      color: $secondary;
+      font-size: 1rem;
+    }
+    .type {
+      @include badge($bg: $light-gray, $color: $secondary);
+    }
+    .duration {
+      @include badge($bg: rgba($primary, 0.2), $color: $primary);
+    }
+  }
+  .mobile_only {
+    display: none;
+  }
+  .desktop-only {
+    display: block;
+  }
+  .achievements {
+    .icon {
+      color: $primary;
+      padding: 0;
+      background-color: transparent;
+      margin-right: 10px;
+    }
+    &_title {
+      margin: 15px 0;
+      @include flex($align: center);
+    }
+    &_list {
+      list-style: none;
+      line-height: 1.6;
+      li {
+        color: $secondary;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .icon {
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+      span {
+        flex: 1;
+      }
+    }
   }
   // Tablet
   @include tablet {
+    .time-line {
+      @include flex($gap: 20px);
+    }
   }
   // Mobile
   @include mobile {
+    .mobile_only {
+      @include flex($direction: column, $gap: 10px);
+    }
+    .desktop-only {
+      display: none;
+    }
+    .time-line {
+      @include flex($gap: 15px);
+    }
+    .experience-item {
+      .role,
+      .meta {
+        font-size: 0.9rem;
+      }
+      .role {
+        margin: 15px 0;
+        line-height: 1.4;
+      }
+    }
+    .achievements {
+      &_list {
+        li {
+          font-size: 0.8rem;
+        }
+      }
+    }
   }
 }

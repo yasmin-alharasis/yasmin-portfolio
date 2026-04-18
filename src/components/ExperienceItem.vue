@@ -7,31 +7,50 @@
       </div>
     </div>
     <div class="experience-item">
-      <div class="timeline-dot">
-        <font-awesome-icon :icon="['fas', 'briefcase']" />
+      <div class="line">
+        <h3 class="position">{{ experience.position }}</h3>
+        <div class="desktop-only">
+          <div class="duration">
+            {{ experience.duration }}
+          </div>
+        </div>
       </div>
-      <h3 class="position">{{ experience.position }}</h3>
-
-      <div class="meta">
-        <span class="company">{{ experience.company }}</span>
-        <span class="dot">•</span>
-        <span class="place">{{ experience.place }}</span>
-        <span class="type">{{ experience.type }}</span>
+      <div class="line">
+        <div class="meta">
+          <div>
+            <font-awesome-icon :icon="['fas', 'briefcase']" class="meta_icon" />
+            <span class="company">{{ experience.company }}</span>
+          </div>
+          <div>
+            <font-awesome-icon :icon="['fas', 'briefcase']" class="meta_icon" />
+            <span class="company">{{ experience.place }}</span>
+          </div>
+        </div>
+        <div class="desktop-only">
+          <div class="type">{{ experience.type }}</div>
+        </div>
       </div>
-
-      <div class="duration">
-        {{ experience.duration }}
+      <div class="mobile_only">
+        <div class="duration">
+          {{ experience.duration }}
+        </div>
+        <div class="type">{{ experience.type }}</div>
       </div>
-
       <p class="role">
         {{ experience.role }}
       </p>
-      <h4 class="achievements-title">key achievements</h4>
-      <ul class="achievements-list">
-        <li v-for="achievement in experience.achievements" :key="achievement.id">
-          {{ achievement }}
-        </li>
-      </ul>
+      <div class="achievements">
+        <h4 class="achievements_title">
+          <font-awesome-icon :icon="['fas', 'trophy']" class="icon" />
+          key achievements
+        </h4>
+        <ul class="achievements_list">
+          <li v-for="achievement in experience.achievements" :key="achievement.id">
+            <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon" size="xs" />
+            <span>{{ achievement }}</span>
+          </li>
+        </ul>
+      </div>
       <TechnologiesList :technologies="experience.technologies" />
     </div>
   </div>

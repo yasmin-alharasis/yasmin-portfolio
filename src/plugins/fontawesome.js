@@ -25,7 +25,8 @@ import {
     faArrowUpRightFromSquare,
     faBriefcase,
     faUserGraduate,
-    faLaptopCode
+    faLaptopCode,
+    faTrophy
 } from '@fortawesome/free-solid-svg-icons'
 // Brand icons
 import { faHotjar, faGithub, faLinkedin, faSquareGithub } from '@fortawesome/free-brands-svg-icons'
@@ -53,7 +54,8 @@ library.add(
     faSquareGithub,
     faBriefcase,
     faUserGraduate,
-    faLaptopCode
+    faLaptopCode,
+    faTrophy
 )
 
 export default FontAwesomeIcon
