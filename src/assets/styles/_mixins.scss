@@ -116,12 +116,12 @@
   color: $color;
   background-color: $bg-color;
 }
-@mixin main-btn($color, $bg, $fs: 1.1rem, $p: 14px 35px) {
+@mixin main-btn($color, $bg, $fs: 1.1rem, $p: 14px 35px, $br: 8px) {
   padding: $p;
   font-size: $fs;
   cursor: pointer;
   transition: 0.3s;
-  border-radius: 8px;
+  border-radius: $br;
   color: $color;
   background-color: $bg;
   display: inline-flex;

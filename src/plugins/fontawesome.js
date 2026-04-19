@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
     faHome,
     faUser,
-    faStar,
+    faStar as farStar,
     faEnvelope,
     faMoon,
     faSun,
@@ -26,14 +26,16 @@ import {
     faBriefcase,
     faUserGraduate,
     faLaptopCode,
-    faTrophy
+    faTrophy,
+    faPlus,
+    faStar as fasStar,
+    faQuoteRight
 } from '@fortawesome/free-solid-svg-icons'
 // Brand icons
 import { faHotjar, faGithub, faLinkedin, faSquareGithub } from '@fortawesome/free-brands-svg-icons'
 library.add(
     faHome,
     faUser,
-    faStar,
     faEnvelope,
     faMoon,
     faSun,
@@ -55,7 +57,11 @@ library.add(
     faBriefcase,
     faUserGraduate,
     faLaptopCode,
-    faTrophy
+    faTrophy,
+    faPlus,
+    farStar,
+    fasStar,
+    faQuoteRight
 )
 
 export default FontAwesomeIcon
