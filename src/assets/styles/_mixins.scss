@@ -70,23 +70,25 @@
     @include flex($direction: column, $align: $align, $justify: center, $gap: 10px);
   }
 }
-@mixin card {
+@mixin card($type: null, $mr: 15px 0, $pa: 10px, $icon-pa: 5px) {
   will-change: transform;
   border-radius: 10px;
   border: 1px solid $light-gray;
-  padding: 10px;
-  margin: 15px 0;
+  padding: $pa;
+  margin: $mr;
   transition: transform 0.3s ease;
   .icon {
     color: rgba($primary, 0.8);
     background-color: rgba($primary, 0.1);
-    padding: 5px;
+    padding: $icon-pa;
     border-radius: 10px;
   }
   &:hover {
     border: 1px solid rgba($primary, 0.2);
-    @include box-shadow;
-    transform: scale(1.04);
+    @if $type != 'static' {
+      @include box-shadow;
+      transform: scale(1.04);
+    }
   }
 }
 @mixin badge($bg: transparent, $color, $br: 15px, $fs: small) {
@@ -147,8 +149,8 @@
     color: $light;
   }
 }
-@mixin social-link {
-  font-size: 18px;
+@mixin social-link($fs: 18px) {
+  font-size: $fs;
   color: rgba($secondary, 0.4);
   transition:
     color 0.3s ease,

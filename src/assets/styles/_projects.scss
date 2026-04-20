@@ -143,10 +143,10 @@
             border-radius: 50%;
           }
           .online {
-            background-color: rgb(3, 173, 3);
+            background-color: $green;
           }
           .offline {
-            background-color: rgb(230, 2, 2);
+            background-color: $red;
           }
         }
       }

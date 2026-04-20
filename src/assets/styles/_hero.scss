@@ -40,15 +40,7 @@
       @include secandary-btn(var(--color-text), transparent);
     }
   }
-  .social-links {
-    .connect {
-      color: $secondary;
-      margin-right: 20px;
-    }
-    .social-link {
-      @include social-link;
-    }
-  }
+  
   // Tablet
   @include tablet {
     .name {
@@ -81,11 +73,6 @@
       }
       &_primary {
         @include flex($justify: center);
-      }
-    }
-    .social-links {
-      .social-link {
-        font-size: 15px;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <section class="hero" id="hero">
-    <Badge :badgeTitle="badgeTitle" variant="custom"/>
+    <Badge :badgeTitle="badgeTitle" variant="custom" />
     <h1 class="name">yasmin harasis</h1>
     <h2 class="subtitle">
       Turning ideas into scalable, <span>high-quality software.</span>
@@ -16,28 +16,13 @@
       </button>
       <button class="actions_secondary" @click="scrollTo('contact')">Get In Touch</button>
     </div>
-    <div class="social-links">
-      <span class="connect">Connect with me:</span>
-      <a
-        href="https://github.com/yasmin-alharasis"
-        target="_blank"
-        class="social-link github"
-      >
-        <font-awesome-icon :icon="['fab', 'github']" size="2xl" />
-      </a>
 
-      <a
-        href="https://www.linkedin.com/in/yasmin-al-harasis/"
-        target="_blank"
-        class="social-link linkedin"
-      >
-        <font-awesome-icon :icon="['fab', 'linkedin']" size="2xl" />
-      </a>
-    </div>
+    <SocialLinks section="hero" />
   </section>
 </template>
 <script setup>
 import { useScroll } from "@/composables/useScroll";
+import SocialLinks from "./SocialLinks.vue";
 import Badge from "./Badge.vue";
 const { scrollTo } = useScroll();
 const badgeTitle = "available for opportunities";
