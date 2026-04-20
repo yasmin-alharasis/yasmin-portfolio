@@ -5,7 +5,7 @@
       :subtitle="subtitle"
       :description="description"
     />
-    <button class="actions_primary" @click="scrollTo('projects')">
+    <button class="actions_primary" @click="showDialog = true">
       <font-awesome-icon :icon="['fas', 'plus']" class="icon" />
       add your testimonial
     </button>
@@ -48,17 +48,21 @@
         ></span>
       </div>
     </div>
+    <TestimonialDialog v-model="showDialog" @submit="handleSubmit" />
   </section>
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import SectionHeader from "./SectionHeader.vue";
-
+import TestimonialDialog from "./TestimonialDialog.vue";
 const badgeTitle = "client love";
 const subtitle = "what people say";
 const description =
   "don't just take my word for it. Here's what clients, colleagues, and users have to say about working with me.";
-
+const showDialog = ref(false);
+const handleSubmit = (data) => {
+  console.log("data-->", data);
+};
 const current = ref(0);
 
 const testimonials = [

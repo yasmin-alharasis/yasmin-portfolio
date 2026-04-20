@@ -24,12 +24,12 @@ defineProps({
 header {
   @include flex($direction: column, $gap: 15px, $align: center);
   .subtitle {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--color-text);
     text-transform: capitalize;
   }
   .description {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: $secondary;
     line-height: 1.6;
     max-width: 750px;
@@ -40,9 +40,6 @@ header {
   }
   // Tablet
   @include tablet {
-    .subtitle {
-      font-size: 1.8rem;
-    }
     .description {
       font-size: 1.1rem;
     }
