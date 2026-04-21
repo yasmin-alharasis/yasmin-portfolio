@@ -250,19 +250,11 @@ label {
 .field {
   @include flex($direction: column, $gap: 6px);
 }
-input,
-textarea {
-  background: transparent;
-  color: var(--color-text);
-  padding: 10px;
-  border: 1px solid $light-gray;
-  border-radius: 8px;
+input {
+  @include input;
 }
-
 textarea {
-  width: 100%;
-  min-height: 100px;
-  margin-bottom: 10px;
+  @include textarea;
 }
 .rating {
   margin: 14px 0;
@@ -280,26 +272,13 @@ textarea {
   @include flex($direction: column, $gap: 10px);
 }
 .actions {
-  @include flex($gap: 10px);
-  margin: 20px 0px;
-  button {
-    text-transform: capitalize;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 0.9rem;
-  }
+  @include actions;
 }
 .submit {
-  background: $primary;
-  color: $light;
-  &:hover {
-    background: rgba($primary, 0.8);
-  }
+  @include submitBtn;
 }
 .cancel {
+  @include cancelBtn;
   &:hover {
     background-color: $light-gray;
   }

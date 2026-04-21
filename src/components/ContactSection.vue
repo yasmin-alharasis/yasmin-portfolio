@@ -25,12 +25,15 @@
           </small>
         </div>
       </div>
-      <div class="col">hellow 2</div>
+      <div class="col">
+        <ContactForm />
+      </div>
     </div>
   </section>
 </template>
 <script setup>
 import ContactCard from "./ContactCard.vue";
+import ContactForm from "./ContactForm.vue";
 import SocialLinks from "./SocialLinks.vue";
 import SectionHeader from "./SectionHeader.vue";
 const badgeTitle = "get in touch";

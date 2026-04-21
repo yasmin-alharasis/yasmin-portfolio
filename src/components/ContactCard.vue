@@ -21,7 +21,7 @@ defineProps({
 <style scoped lang="scss">
 @use "../assets/styles/_mixins" as *;
 @use "../assets/styles/_variables" as *;
-
+@use "../assets/styles/_media" as *;
 .card {
   @include grid($columns: 1fr 4fr, $align: center);
   @include card($type: "static", $mr: 10px 0, $pa: 15px, $icon-pa: 8px);
@@ -39,5 +39,17 @@ defineProps({
 }
 small {
   color: $secondary;
+}
+// Tablet
+@include tablet {
+  .card {
+    @include grid($columns: 1fr 10fr, $align: center);
+  }
+}
+// Mobile
+@include mobile {
+  .card {
+    @include grid($columns: 1fr 5fr, $align: center);
+  }
 }
 </style>

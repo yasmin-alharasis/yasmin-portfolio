@@ -6,7 +6,7 @@
   @include main_container;
   .container {
     width: 100%;
-    @include grid($columns: 1fr 2fr, $gap: 20px);
+    @include grid($columns: 1fr 2fr, $gap: 40px);
   }
   .col {
     @include flex($direction: column);
@@ -43,6 +43,9 @@
   }
   // Tablet
   @include tablet {
+    .container {
+      @include grid($columns: 1fr, $gap: 20px);
+    }
   }
   // Mobile
   @include mobile {
