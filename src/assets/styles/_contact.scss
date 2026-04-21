@@ -41,6 +41,95 @@
       margin-bottom: 10px;
     }
   }
+  hr {
+    @include hr;
+    width: 100%;
+  }
+  .footer {
+    padding: 10px 20px;
+
+    .container {
+      @include grid($columns: repeat(3, 1fr), $gap: 60px);
+    }
+
+    .col {
+      @include flex($direction: column, $gap: 15px, $justify: center);
+    }
+
+    .logo {
+      color: $primary;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: capitalize;
+      margin-bottom: 15px;
+    }
+
+    .description {
+      color: $secondary;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin: 8px 0;
+        color: $secondary;
+
+        &:hover {
+          color: $dark;
+        }
+      }
+    }
+    .links {
+      cursor: pointer;
+    }
+
+    .social {
+      display: flex;
+      gap: 15px;
+      font-size: 1.5rem;
+      a {
+        color: $secondary;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+  .row {
+    @include flex($justify: space-between);
+  }
+  .footer-content {
+    line-height: 1.5;
+    font-size: 15px;
+    color: #aaa;
+
+    span {
+      font-weight: 600;
+    }
+  }
+  .back-to-top {
+    border: 1px solid $light-gray;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  .back-to-top::first-letter {
+    text-transform: uppercase;
+  }
+  .back-to-top:hover {
+    transform: translateY(-3px);
+    background-color: rgba($primary, 0.9);
+    color: $light;
+  }
   // Tablet
   @include tablet {
     .container {
@@ -51,6 +140,17 @@
   @include mobile {
     .container {
       @include grid($columns: 1fr, $gap: 20px);
+    }
+    .footer {
+      .container {
+        @include grid($columns: 1fr, $gap: 30px);
+      }
+    }
+    .footer-content {
+      text-align: center;
+    }
+    .row {
+      @include flex($wrap: wrap, $gap: 25px, $justify: center);
     }
   }
 }

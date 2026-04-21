@@ -199,3 +199,9 @@
     background: rgba($primary, 0.8);
   }
 }
+@mixin hr {
+  margin: 2rem 0;
+  border: none;
+  height: 1px;
+  background-color: $light-gray;
+}

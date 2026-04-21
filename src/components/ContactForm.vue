@@ -181,10 +181,7 @@ textarea {
   @include submitBtn;
 }
 hr {
-  margin: 2rem 0;
-  border: none;
-  height: 1px;
-  background-color: $light-gray;
+  @include hr;
 }
 .line {
   @include flex($gap: 20px);
