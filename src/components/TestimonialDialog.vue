@@ -156,7 +156,7 @@ const validate = () => {
   errors.role = validateRequired(form.role, "Role");
   errors.company = validateRequired(form.company, "Company");
   errors.rating = validateRequired(form.rating, "Rating");
-  errors.message = validateMessage(form.message);
+  errors.message = validateMessage(form.message, "Testimonial");
 
   if (
     errors.name ||

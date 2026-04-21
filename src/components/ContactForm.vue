@@ -80,7 +80,13 @@
   </div>
 </template>
 <script setup>
-import { reactive } from "vue";
+import {
+  validateEmail,
+  validateMessage,
+  validateRequired,
+  validateName,
+} from "@/utils/validation";
+import { reactive, watch } from "vue";
 const form = reactive({
   name: "",
   email: "",
@@ -94,15 +100,33 @@ const errors = reactive({
   message: "",
 });
 const validate = () => {
-  console.log("validate form");
+  let isValid = true;
+  Object.keys(errors).forEach((key) => (errors[key] = ""));
+  errors.name = validateName(form.name);
+  errors.email = validateEmail(form.email);
+  errors.subject = validateRequired(form.subject, "Subject");
+  errors.message = validateMessage(form.message, "Message");
+
+  if (errors.name || errors.email || errors.subject || errors.message) {
+    isValid = false;
+  }
+  return isValid;
 };
 const submit = () => {
-  if (!validate) return;
+  if (!validate()) return;
   console.log("submit -->", { ...form });
   close();
 };
+const clearError = (field) => {
+  if (errors[field]) errors[field] = "";
+};
+["name", "email", "subject", "message"].forEach((field) => {
+  watch(
+    () => form[field],
+    () => clearError(field)
+  );
+});
 const close = () => {
-  console.log("close form");
   resetForm();
 };
 const resetForm = () => {
@@ -110,7 +134,7 @@ const resetForm = () => {
   form.email = "";
   form.subject = "";
   form.message = "";
-  console.log("reset form");
+  Object.keys(errors).forEach((key) => (errors[key] = ""));
 };
 </script>
 <style scoped lang="scss">

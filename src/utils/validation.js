@@ -17,10 +17,10 @@ export const validateName = (name) => {
     if (name.length < 2) return "Name must be at least 2 characters";
     return "";
 };
-export const validateMessage = (message) => {
-    if (!message) return "Testimonial is required";
-    if (message.length < 10 && message.length <= 500) return "Testimonial must be at least 10 characters";
-    if (message.length > 500) return "Testimonial must be less than 500 characters";
+export const validateMessage = (value, fieldName) => {
+    if (!value) return `${fieldName} is required`;
+    if (value.length < 10 && value.length <= 500) return `${fieldName} must be at least 10 characters`;
+    if (value.length > 500) return `${fieldName} must be less than 500 characters`;
 
     return "";
 }
