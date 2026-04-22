@@ -18,9 +18,9 @@ export const validateName = (name) => {
     return "";
 };
 export const validateMessage = (value, fieldName) => {
-    if (!value) return `${fieldName} is required`;
-    if (value.length < 10 && value.length <= 500) return `${fieldName} must be at least 10 characters`;
-    if (value.length > 500) return `${fieldName} must be less than 500 characters`;
+  if (!value) return `${fieldName} is required`
+  if (value.length < 10) return `${fieldName} must be at least 10 characters`
+  if (value.length > 500) return `${fieldName} must be less than 500 characters`
 
-    return "";
+  return ""
 }

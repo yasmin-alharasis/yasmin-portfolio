@@ -90,6 +90,7 @@
             :class="{ invalid: errors.message }"
             @blur="validate"
           ></textarea>
+          <div class="counter">{{ form.message.length || 0 }}/500</div>
           <small v-if="errors.message" class="error">
             {{ errors.message }}
           </small>
@@ -293,6 +294,9 @@ small {
 
 .invalid {
   border-color: red;
+}
+.counter {
+  @include counter;
 }
 
 // Tablet
