@@ -33,7 +33,8 @@ import {
     faPhone,
     faLocationDot,
     faPaperPlane,
-    faAngleUp
+    faAngleUp,
+    faFilter
 } from '@fortawesome/free-solid-svg-icons'
 // Brand icons
 import { faHotjar, faLinkedin, faSquareGithub } from '@fortawesome/free-brands-svg-icons'
@@ -68,7 +69,8 @@ library.add(
     faPhone,
     faLocationDot,
     faPaperPlane,
-    faAngleUp
+    faAngleUp,
+    faFilter
 )
 
 export default FontAwesomeIcon

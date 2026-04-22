@@ -39,6 +39,11 @@
           :project="project"
         />
       </div>
+      <div v-if="!visibleProjects.length" class="empty-state">
+        <font-awesome-icon :icon="['fas', 'filter']" class="icon" size="xl"/>
+        <h3>No projects found</h3>
+        <span>Try selecting a different category </span>
+      </div>
       <div class="working-together">
         <h2>Interested in working together?</h2>
         <p>Let's discuss your project and create something amazing together.</p>

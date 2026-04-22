@@ -168,6 +168,10 @@
   border: 1px solid $light-gray;
   border-radius: 8px;
   width: 100%;
+  &:focus {
+    border-color: $primary;
+    outline: none;
+  }
 }
 @mixin textarea {
   @include input;

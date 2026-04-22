@@ -136,6 +136,9 @@
     opacity: 0;
     transform: translateX(-50px);
   }
+  .empty {
+    padding: 40px 0;
+  }
   // Tablet
   @include tablet {
   }

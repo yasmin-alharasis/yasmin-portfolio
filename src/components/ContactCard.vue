@@ -1,5 +1,8 @@
 <template>
-  <div :class="['card', { clickable: contactInfo.type !== 'location' }]">
+  <div
+    :class="['card', { clickable: contactInfo.type !== 'location' }]"
+    @click="goToContact(contactInfo.type, contactInfo.by)"
+  >
     <font-awesome-icon
       :icon="[contactInfo.icon['type'], contactInfo.icon['name']]"
       class="icon"
@@ -17,6 +20,13 @@
 defineProps({
   contactInfo: Object,
 });
+const goToContact = (type, value) => {
+  if (type === "email") {
+    window.location.href = `mailto:${value}`;
+  } else if (type === "phone") {
+    window.location.href = `tel:${value}`;
+  }
+};
 </script>
 <style scoped lang="scss">
 @use "../assets/styles/_mixins" as *;

@@ -10,38 +10,52 @@
       add your testimonial
     </button>
     <div class="cards">
-      <button class="arrow left" @click="prevSlide">‹</button>
-      <button class="arrow right" @click="nextSlide">›</button>
+      <button class="arrow left" @click="prevSlide" v-if="visibleTestimonials.length">
+        ‹
+      </button>
+      <button class="arrow right" @click="nextSlide" v-if="visibleTestimonials.length">
+        ›
+      </button>
 
       <transition name="slide-fade" mode="out-in">
-        <div class="card" :key="testimonials[current].name">
+        <div
+          class="card"
+          :key="visibleTestimonials[current].name"
+          v-if="visibleTestimonials.length"
+        >
           <font-awesome-icon :icon="['fas', 'quote-right']" class="icon" size="xl" />
-          <div class="text">"{{ testimonials[current].text }}"</div>
+          <div class="text">"{{ visibleTestimonials[current].text }}"</div>
           <div class="score">
-            <div v-for="i in testimonials[current].score" :key="i">
+            <div v-for="i in visibleTestimonials[current].score" :key="i">
               <font-awesome-icon :icon="['fas', 'star']" class="icon" />
             </div>
           </div>
-          <div class="name">{{ testimonials[current].name }}</div>
+          <div class="name">{{ visibleTestimonials[current].name }}</div>
           <div
             class="meta"
-            v-if="testimonials[current].company || testimonials[current].role"
+            v-if="
+              visibleTestimonials[current].company || visibleTestimonials[current].role
+            "
           >
-            <small class="role">{{ testimonials[current].role }}</small>
-            <span v-if="testimonials[current].company && testimonials[current].role"
+            <small class="role">{{ visibleTestimonials[current].role }}</small>
+            <span
+              v-if="
+                visibleTestimonials[current].company && visibleTestimonials[current].role
+              "
               >&nbsp;/&nbsp;</span
             >
-            <small class="company" v-if="testimonials[current].company">{{
-              testimonials[current].company
+            <small class="company" v-if="visibleTestimonials[current].company">{{
+              visibleTestimonials[current].company
             }}</small>
           </div>
-          <small class="date">{{ testimonials[current].date }}</small>
+          <small class="date">{{ visibleTestimonials[current].date }}</small>
         </div>
       </transition>
+      <h3 v-if="!visibleTestimonials.length" class="empty">No testimonials yet 🚀</h3>
 
       <div class="dots">
         <span
-          v-for="(item, index) in testimonials"
+          v-for="(item, index) in visibleTestimonials"
           :key="index"
           :class="{ active: index === current }"
           @click="goTo(index)"
@@ -52,7 +66,7 @@
   </section>
 </template>
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import SectionHeader from "./SectionHeader.vue";
 import TestimonialDialog from "./TestimonialDialog.vue";
 const badgeTitle = "client love";
@@ -73,6 +87,7 @@ const testimonials = [
     role: "colleague",
     company: "",
     score: 3,
+    status: "accepted",
   },
   {
     name: "vikram singh",
@@ -81,6 +96,7 @@ const testimonials = [
     role: "",
     company: "ss",
     score: 5,
+    status: "accepted",
   },
   {
     name: "sneha gupta",
@@ -89,6 +105,7 @@ const testimonials = [
     role: "client",
     company: "",
     score: 2,
+    status: "rejeted",
   },
   {
     name: "yasmin jamil",
@@ -97,15 +114,21 @@ const testimonials = [
     role: "maneger",
     company: "pandosoft",
     score: 4,
+    status: "accepted",
   },
 ];
-
+const visibleTestimonials = computed(() =>
+  testimonials.filter((p) => p.status === "accepted")
+);
 const next = () => {
-  current.value = (current.value + 1) % testimonials.length;
+  if (!visibleTestimonials.value.length) return;
+  current.value = (current.value + 1) % visibleTestimonials.value.length;
 };
-
 const prev = () => {
-  current.value = (current.value - 1 + testimonials.length) % testimonials.length;
+  if (!visibleTestimonials.value.length) return;
+  current.value =
+    (current.value - 1 + visibleTestimonials.value.length) %
+    visibleTestimonials.value.length;
 };
 
 let interval;
