@@ -51,7 +51,7 @@
         <label for="message">message *</label>
         <textarea
           placeholder="Tell me about your project,ideas,or just say hello..."
-          v-model="form.message"
+          v-model.trim="form.message"
           maxlength="500"
           name="message"
           :class="{ invalid: errors.message }"
@@ -62,9 +62,11 @@
           {{ errors.message }}
         </small>
       </div>
-      <button type="submit" class="submit">
-        <font-awesome-icon :icon="['fas', 'paper-plane']" class="icon" />
-        send message
+      <button type="submit" class="submit" :disabled="loading || statusVisible">
+        <font-awesome-icon :icon="['fas', 'paper-plane']" class="icon" v-if="!loading" />
+        <font-awesome-icon v-else :icon="['fas', 'spinner']" spin class="icon" />
+        <span v-if="loading">sending ...</span>
+        <span v-else>send message</span>
       </button>
     </form>
     <hr />
@@ -78,6 +80,11 @@
         <small>Free consultation available</small>
       </div>
     </div>
+    <StatusBadge
+      :statusVisible="statusVisible"
+      :statusMessage="statusMessage"
+      :status="status"
+    />
   </div>
 </template>
 <script setup>
@@ -87,7 +94,12 @@ import {
   validateRequired,
   validateName,
 } from "@/utils/validation";
-import { reactive, watch } from "vue";
+import StatusBadge from "./StatusBadge.vue";
+import { useToast } from "@/composables/useToast";
+const { statusVisible, statusMessage, status, showToast } = useToast();
+import { reactive, watch, ref } from "vue";
+const loading = ref(false);
+
 const form = reactive({
   name: "",
   email: "",
@@ -113,10 +125,27 @@ const validate = () => {
   }
   return isValid;
 };
-const submit = () => {
+const submit = async () => {
+  if (loading.value) return;
   if (!validate()) return;
-  console.log("submit -->", { ...form });
-  close();
+
+  loading.value = true;
+  try {
+    await new Promise((resolve) => {
+      setTimeout(resolve, 2000);
+    });
+    console.log("submit -->", { ...form });
+    showToast(
+      "Thanks for reaching out! I'll get back to you within 24 hours 🚀",
+      "success"
+    );
+    close();
+  } catch (error) {
+    console.log("error", error);
+    showToast("Something went wrong, please try again.", "error");
+  } finally {
+    loading.value = false;
+  }
 };
 const clearError = (field) => {
   if (errors[field]) errors[field] = "";
@@ -171,12 +200,11 @@ textarea {
   @include textarea;
 }
 .error {
-  color: red;
-  font-size: 0.8rem;
+  @include error;
 }
 
 .invalid {
-  border-color: red;
+   @include invalid;
 }
 .submit {
   @include submitBtn;

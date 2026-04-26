@@ -84,7 +84,7 @@
           <label for="testimonial">your testimonial *</label>
           <textarea
             placeholder="Share your experience working with us..."
-            v-model="form.message"
+            v-model.trim="form.message"
             maxlength="500"
             name="testimonial"
             :class="{ invalid: errors.message }"
@@ -96,19 +96,43 @@
           </small>
         </div>
         <div class="actions">
-          <button type="button" @click="close" class="cancel">cancel</button>
-          <button type="submit" class="submit">submit testimonial</button>
+          <button
+            type="button"
+            @click="close"
+            class="cancel"
+            :disabled="loading || statusVisible"
+          >
+            cancel
+          </button>
+          <button type="submit" class="submit" :disabled="loading || statusVisible">
+            <font-awesome-icon
+              :icon="['fas', 'paper-plane']"
+              class="icon"
+              v-if="!loading"
+            />
+            <font-awesome-icon v-else :icon="['fas', 'spinner']" spin class="icon" />
+            <span v-if="loading">sending ...</span>
+            <span v-else>submit</span>
+          </button>
         </div>
         <small
           >Your testimonial will be reviewed before being published on the website.</small
         >
       </form>
+      <StatusBadge
+        :statusVisible="statusVisible"
+        :statusMessage="statusMessage"
+        :status="status"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { reactive, watch } from "vue";
+import { reactive, watch, ref } from "vue";
+import StatusBadge from "./StatusBadge.vue";
+import { useToast } from "@/composables/useToast";
+const { statusVisible, statusMessage, status, showToast } = useToast();
 import {
   validateEmail,
   validateRequired,
@@ -118,7 +142,6 @@ import {
 const props = defineProps({
   modelValue: Boolean,
 });
-
 const emit = defineEmits(["update:modelValue", "submit"]);
 
 const form = reactive({
@@ -147,6 +170,8 @@ const errors = reactive({
   rating: "",
   message: "",
 });
+const loading = ref(false);
+
 const validate = () => {
   let isValid = true;
   // reset errors
@@ -186,11 +211,26 @@ const close = () => {
   emit("update:modelValue", false);
 };
 
-const submit = () => {
+const submit = async () => {
+  if (loading.value) return;
   if (!validate()) return;
+  loading.value = true;
 
-  emit("submit", { ...form });
-  close();
+  try {
+    await new Promise((resolve) => {
+      setTimeout(resolve, 2000);
+    });
+    showToast("Message sent successfully 🚀", "success");
+    emit("submit", { ...form });
+    setTimeout(() => {
+      close();
+    }, 3000);
+  } catch (error) {
+    console.log("error", error);
+    showToast("Something went wrong, please try again.", "error");
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -288,12 +328,11 @@ small {
   color: $secondary;
 }
 .error {
-  color: red;
-  font-size: 0.8rem;
+  @include error;
 }
 
 .invalid {
-  border-color: red;
+  @include invalid;
 }
 .counter {
   @include counter;
