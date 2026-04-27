@@ -98,8 +98,9 @@ import StatusBadge from "./StatusBadge.vue";
 import { useToast } from "@/composables/useToast";
 const { statusVisible, statusMessage, status, showToast } = useToast();
 import { reactive, watch, ref } from "vue";
-const loading = ref(false);
+import { sendMessage } from "@/services/messageService";
 
+const loading = ref(false);
 const form = reactive({
   name: "",
   email: "",
@@ -131,18 +132,26 @@ const submit = async () => {
 
   loading.value = true;
   try {
-    await new Promise((resolve) => {
-      setTimeout(resolve, 2000);
-    });
-    console.log("submit -->", { ...form });
-    showToast(
-      "Thanks for reaching out! I'll get back to you within 24 hours 🚀",
-      "success"
-    );
-    close();
+    const result = await sendMessage({ ...form });
+    if (result.success) {
+      showToast(
+        "Thanks for reaching out! I'll get back to you within 24 hours 🚀",
+        "success"
+      );
+      close();
+    } else {
+       showToast(
+        "Failed to send message. Please try again.",
+        "error"
+      );
+    }
+    
   } catch (error) {
     console.log("error", error);
-    showToast("Something went wrong, please try again.", "error");
+    showToast(
+      "Something went wrong. Please try again later.",
+      "error"
+    );
   } finally {
     loading.value = false;
   }
@@ -204,7 +213,7 @@ textarea {
 }
 
 .invalid {
-   @include invalid;
+  @include invalid;
 }
 .submit {
   @include submitBtn;
