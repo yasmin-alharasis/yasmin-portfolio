@@ -62,6 +62,7 @@
           {{ errors.message }}
         </small>
       </div>
+      <input type="text" v-model="form.website" style="display: none" />
       <button type="submit" class="submit" :disabled="loading || statusVisible">
         <font-awesome-icon :icon="['fas', 'paper-plane']" class="icon" v-if="!loading" />
         <font-awesome-icon v-else :icon="['fas', 'spinner']" spin class="icon" />
@@ -106,6 +107,7 @@ const form = reactive({
   email: "",
   subject: "",
   message: "",
+  website: "", //  honeypot
 });
 const errors = reactive({
   name: "",
@@ -128,30 +130,52 @@ const validate = () => {
 };
 const submit = async () => {
   if (loading.value) return;
+  //  Honeypot (bot detection)
+  if (form.website) {
+    return; // bot detected 
+  }
+  //  Cooldown (60 ثانية)
+  const lastSent = localStorage.getItem("lastMessageTime");
+  const now = Date.now();
+
+  if (lastSent && now - lastSent < 60000) {
+    showToast("Please wait before sending another message ⏳", "error");
+    return;
+  }
+  // 🚫 Daily limit (3 رسائل)
+  const today = new Date().toDateString();
+  const savedDate = localStorage.getItem("messageDate");
+  let count = Number(localStorage.getItem("messageCount")) || 0;
+
+  if (savedDate !== today) {
+    localStorage.setItem("messageDate", today);
+    localStorage.setItem("messageCount", 0);
+    count = 0;
+  }
+  if (count >= 3) {
+    showToast("You reached the daily limit (3 messages) 🚫", "error");
+    return;
+  }
+
   if (!validate()) return;
 
   loading.value = true;
   try {
     const result = await sendMessage({ ...form });
     if (result.success) {
+      localStorage.setItem("lastMessageTime", Date.now());
+      localStorage.setItem("messageCount", count + 1);
       showToast(
         "Thanks for reaching out! I'll get back to you within 24 hours 🚀",
         "success"
       );
       close();
     } else {
-       showToast(
-        "Failed to send message. Please try again.",
-        "error"
-      );
+      showToast("Failed to send message. Please try again.", "error");
     }
-    
   } catch (error) {
     console.log("error", error);
-    showToast(
-      "Something went wrong. Please try again later.",
-      "error"
-    );
+    showToast("Something went wrong. Please try again later.", "error");
   } finally {
     loading.value = false;
   }
