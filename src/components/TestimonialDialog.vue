@@ -1,7 +1,7 @@
 <template>
   <div v-if="modelValue" class="overlay" @click.self="close">
     <div class="dialog">
-      <button class="close" @click="close">×</button>
+      <button class="close" @click="close"  :disabled="loading || statusVisible">×</button>
 
       <h2>share your experience</h2>
       <p class="subtitle">we'd love to hear about your experience working with us!</p>
@@ -84,17 +84,18 @@
           <label for="testimonial">your testimonial *</label>
           <textarea
             placeholder="Share your experience working with us..."
-            v-model.trim="form.message"
+            v-model.trim="form.testimonial"
             maxlength="500"
             name="testimonial"
-            :class="{ invalid: errors.message }"
+            :class="{ invalid: errors.testimonial }"
             @blur="validate"
           ></textarea>
-          <div class="counter">{{ form.message.length || 0 }}/500</div>
-          <small v-if="errors.message" class="error">
-            {{ errors.message }}
+          <div class="counter">{{ form.testimonial.length || 0 }}/500</div>
+          <small v-if="errors.testimonial" class="error">
+            {{ errors.testimonial }}
           </small>
         </div>
+        <input type="text" v-model="form.website" style="display: none" />
         <div class="actions">
           <button
             type="button"
@@ -139,6 +140,8 @@ import {
   validateMessage,
   validateName,
 } from "@/utils/validation";
+import { submitTestimonial } from "@/services/testimonialService";
+
 const props = defineProps({
   modelValue: Boolean,
 });
@@ -150,7 +153,8 @@ const form = reactive({
   role: "",
   company: "",
   rating: 0,
-  message: "",
+  testimonial: "",
+  website: "", //  honeypot
 });
 const resetForm = () => {
   form.name = "";
@@ -158,7 +162,8 @@ const resetForm = () => {
   form.role = "";
   form.company = "";
   form.rating = 0;
-  form.message = "";
+  form.testimonial = "";
+  form.website = ""; 
 
   Object.keys(errors).forEach((key) => (errors[key] = ""));
 };
@@ -168,7 +173,7 @@ const errors = reactive({
   role: "",
   company: "",
   rating: "",
-  message: "",
+  testimonial: "",
 });
 const loading = ref(false);
 
@@ -182,7 +187,7 @@ const validate = () => {
   errors.role = validateRequired(form.role, "Role");
   errors.company = validateRequired(form.company, "Company");
   errors.rating = validateRequired(form.rating, "Rating");
-  errors.message = validateMessage(form.message, "Testimonial");
+  errors.testimonial = validateMessage(form.testimonial, "Testimonial");
 
   if (
     errors.name ||
@@ -190,7 +195,7 @@ const validate = () => {
     errors.role ||
     errors.company ||
     errors.rating ||
-    errors.message
+    errors.testimonial
   ) {
     isValid = false;
   }
@@ -200,7 +205,7 @@ const validate = () => {
 const clearError = (field) => {
   if (errors[field]) errors[field] = "";
 };
-["name", "email", "role", "company", "rating", "message"].forEach((field) => {
+["name", "email", "role", "company", "rating", "testimonial"].forEach((field) => {
   watch(
     () => form[field],
     () => clearError(field)
@@ -213,18 +218,48 @@ const close = () => {
 
 const submit = async () => {
   if (loading.value) return;
+  //  Honeypot (bot detection)
+  if (form.website) {
+    return; // bot detected
+  }
+  //  Cooldown (60 ثانية)
+  const lastSent = localStorage.getItem("lastTestimonialTime");
+  const now = Date.now();
+
+  if (lastSent && now - lastSent < 60000) {
+    showToast("Please wait before sending another testimonial ⏳", "error");
+    return;
+  }
+
+  // 🚫 Daily limit (3 رسائل)
+  const today = new Date().toDateString();
+  const savedDate = localStorage.getItem("TestimonialDate");
+  let count = Number(localStorage.getItem("TestimonialCount")) || 0;
+
+  if (savedDate !== today) {
+    localStorage.setItem("TestimonialDate", today);
+    localStorage.setItem("TestimonialCount", 0);
+    count = 0;
+  }
+  if (count >= 3) {
+    showToast("You reached the daily limit (3 testimonial) 🚫", "error");
+    return;
+  }
   if (!validate()) return;
   loading.value = true;
 
   try {
-    await new Promise((resolve) => {
-      setTimeout(resolve, 2000);
-    });
-    showToast("Message sent successfully 🚀", "success");
-    emit("submit", { ...form });
-    setTimeout(() => {
-      close();
-    }, 3000);
+    const result = await submitTestimonial({ ...form });
+    if (result.success) {
+      localStorage.setItem("lastTestimonialTime", Date.now());
+      localStorage.setItem("TestimonialCount", count + 1);
+      showToast("Testimonial sent successfully 🚀", "success");
+      setTimeout(() => {
+        close();
+      }, 2500);
+    } else {
+      showToast("Failed to send testimonial. Please try again.", "error");
+    }
   } catch (error) {
     console.log("error", error);
     showToast("Something went wrong, please try again.", "error");
@@ -269,6 +304,10 @@ const submit = async () => {
   font-size: 24px;
   cursor: pointer;
   color: $secondary;
+   &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
 h2,
 .subtitle {

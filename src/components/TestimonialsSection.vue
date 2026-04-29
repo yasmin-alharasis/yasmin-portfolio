@@ -62,7 +62,7 @@
         ></span>
       </div>
     </div>
-    <TestimonialDialog v-model="showDialog" @submit="handleSubmit" />
+    <TestimonialDialog v-model="showDialog" />
   </section>
 </template>
 <script setup>
@@ -74,9 +74,7 @@ const subtitle = "what people say";
 const description =
   "don't just take my word for it. Here's what clients, colleagues, and users have to say about working with me.";
 const showDialog = ref(false);
-const handleSubmit = (data) => {
-  console.log("data-->", data);
-};
+
 const current = ref(0);
 
 const testimonials = [

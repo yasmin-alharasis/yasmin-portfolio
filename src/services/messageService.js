@@ -1,4 +1,4 @@
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc,serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
 import emailjs from '@emailjs/browser';
 
@@ -6,7 +6,7 @@ export const sendMessage = async (form) => {
     try {
         await emailjs.send(
             import.meta.env.VITE_SERVICE_ID,
-            import.meta.env.VITE_TEMPLATE_ID,
+            import.meta.env.VITE_MESSAGE_TEMPLATE_ID,
             {
                 name: form.name,
                 email: form.email,
@@ -20,7 +20,7 @@ export const sendMessage = async (form) => {
             email: form.email,
             subject: form.subject,
             message: form.message,
-            createdAt: new Date(),
+            createdAt: serverTimestamp()
         });
         console.log("Message + Email sent ✅");
         return { success: true };

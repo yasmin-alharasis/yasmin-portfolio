@@ -197,6 +197,8 @@ const resetForm = () => {
   form.email = "";
   form.subject = "";
   form.message = "";
+  form.website= ""; //  honeypot
+  
   Object.keys(errors).forEach((key) => (errors[key] = ""));
 };
 </script>

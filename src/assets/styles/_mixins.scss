@@ -191,6 +191,10 @@
   cursor: pointer;
   width: 100%;
   font-size: 0.9rem;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
 @mixin cancelBtn {
   @include actionsBtn;
@@ -204,10 +208,6 @@
   }
   .icon {
     margin-right: 8px;
-  }
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
   }
 }
 @mixin hr {
