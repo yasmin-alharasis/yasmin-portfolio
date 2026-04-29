@@ -50,11 +50,7 @@
             <a href="https://www.linkedin.com/in/yasmin-al-harasis/" target="_blank">
               <font-awesome-icon :icon="['fab', 'linkedin']" />
             </a>
-            <a
-              href="mailto:yasmin.jaalharasis@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a :href="`mailto:${email}`" target="_blank" rel="noopener noreferrer">
               <font-awesome-icon :icon="['far', 'envelope']" />
             </a>
           </div>
@@ -84,7 +80,7 @@
         <div class="footer-content">
           <p>© {{ currentYear }} Yasmin Harasis</p>
           <p>
-            Made with ❤️  using <span>Vue</span> • <span>Vite</span> •
+            Made with ❤️ using <span>Vue</span> • <span>Vite</span> •
             <span>Firebase</span>
           </p>
         </div>
@@ -103,6 +99,9 @@ import SectionHeader from "./SectionHeader.vue";
 import { useScroll } from "@/composables/useScroll";
 const { scrollTo } = useScroll();
 
+const email = import.meta.env.VITE_EMAIL;
+const phone = import.meta.env.VITE_PHONE;
+
 const badgeTitle = "get in touch";
 const subtitle = "let's work together";
 const description =
@@ -112,14 +111,14 @@ const contactsInfo = [
     id: 1,
     type: "email",
     icon: { name: "envelope", type: "far" },
-    by: "yasmin.jaalharasis@gmail.com",
+    by: email,
     description: "Send me an email anytime",
   },
   {
     id: 2,
     type: "phone",
     icon: { name: "phone", type: "fas" },
-    by: "+962799139431",
+    by: phone,
     description: "Available for calls",
   },
   {

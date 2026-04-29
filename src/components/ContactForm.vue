@@ -12,6 +12,7 @@
             id="fname"
             :class="{ invalid: errors.name }"
             @blur="validate"
+            autocomplete="name"
           />
           <small v-if="errors.name" class="error">
             {{ errors.name }}
@@ -27,6 +28,7 @@
             id="email"
             :class="{ invalid: errors.email }"
             @blur="validate"
+            autocomplete="email"
           />
           <small v-if="errors.email" class="error">
             {{ errors.email }}
@@ -42,6 +44,7 @@
           id="subject"
           :class="{ invalid: errors.subject }"
           @blur="validate"
+          autocomplete="off"
         />
         <small v-if="errors.subject" class="error">
           {{ errors.subject }}
@@ -54,6 +57,8 @@
           v-model.trim="form.message"
           maxlength="500"
           name="message"
+          id="message"
+          autocomplete="off"
           :class="{ invalid: errors.message }"
           @blur="validate"
         ></textarea>
@@ -62,7 +67,7 @@
           {{ errors.message }}
         </small>
       </div>
-      <input type="text" v-model="form.website" style="display: none" />
+      <input type="text" v-model="form.website" style="display: none" id="website"/>
       <button type="submit" class="submit" :disabled="loading || statusVisible">
         <font-awesome-icon :icon="['fas', 'paper-plane']" class="icon" v-if="!loading" />
         <font-awesome-icon v-else :icon="['fas', 'spinner']" spin class="icon" />

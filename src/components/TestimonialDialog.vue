@@ -17,6 +17,7 @@
               id="fname"
               :class="{ invalid: errors.name }"
               @blur="validate"
+              autocomplete="name"
             />
             <small v-if="errors.name" class="error">
               {{ errors.name }}
@@ -32,6 +33,7 @@
               id="email"
               :class="{ invalid: errors.email }"
               @blur="validate"
+              autocomplete="email"
             />
             <small v-if="errors.email" class="error">
               {{ errors.email }}
@@ -46,6 +48,7 @@
               v-model="form.role"
               id="role"
               :class="{ invalid: errors.role }"
+              autocomplete="off"
             />
             <small v-if="errors.role" class="error">
               {{ errors.role }}
@@ -60,6 +63,7 @@
               v-model="form.company"
               id="company"
               :class="{ invalid: errors.company }"
+              autocomplete="off"
             />
             <small v-if="errors.company" class="error">
               {{ errors.company }}
@@ -87,15 +91,17 @@
             v-model.trim="form.testimonial"
             maxlength="500"
             name="testimonial"
+            id="testimonial"
             :class="{ invalid: errors.testimonial }"
             @blur="validate"
+            autocomplete="off"
           ></textarea>
           <div class="counter">{{ form.testimonial.length || 0 }}/500</div>
           <small v-if="errors.testimonial" class="error">
             {{ errors.testimonial }}
           </small>
         </div>
-        <input type="text" v-model="form.website" style="display: none" />
+        <input type="text" v-model="form.website" style="display: none" id="website"/>
         <div class="actions">
           <button
             type="button"
