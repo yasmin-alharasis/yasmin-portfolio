@@ -1,8 +1,10 @@
-import { collection, addDoc,doc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
 import emailjs from '@emailjs/browser';
+import { generateToken } from "@/utils/generateToken";
 
 export const submitTestimonial = async (form) => {
+    const token = generateToken();
     try {
         const doc = await addDoc(collection(db, "testimonials"), {
             name: form.name,
@@ -12,7 +14,8 @@ export const submitTestimonial = async (form) => {
             rating: form.rating,
             testimonial: form.testimonial,
             status: "pending",
-            createdAt: serverTimestamp()
+            createdAt: serverTimestamp(),
+            token: token
         });
         console.log('testimonial_id', doc.id);
         //send email to Receiver
@@ -36,7 +39,10 @@ export const submitTestimonial = async (form) => {
                 date: new Date().toLocaleString(),
                 testimonial_id: doc.id,
                 to_email: import.meta.env.VITE_EMAIL,
-                from_name: form.name
+                from_name: form.name,
+                url: import.meta.env.VITE_BASE_URL,
+                portfolio_email: import.meta.env.VITE_EMAIL,
+                token: token
             },
                 import.meta.env.VITE_PUBLIC_KEY
             );
@@ -61,7 +67,9 @@ export const submitTestimonial = async (form) => {
                 testimonial: form.testimonial,
                 date: new Date().toLocaleString(),
                 to_email: form.email,
-                from_name: import.meta.env.VITE_NAME
+                from_name: import.meta.env.VITE_NAME,
+                url: import.meta.env.VITE_BASE_URL,
+                portfolio_email: import.meta.env.VITE_EMAIL
             },
                 import.meta.env.VITE_PUBLIC_KEY
             );
@@ -78,15 +86,36 @@ export const submitTestimonial = async (form) => {
 
 
 export const updateTestimonial = async (status, id) => {
-  try {
-    await updateDoc(doc(db, "testimonials", id), {
-      status: status,
-    });
+    try {
+        await updateDoc(doc(db, "testimonials", id), {
+            status: status,
+            token: null,
+        });
 
-    console.log("Update Testimonial successfully ✅");
-    return { success: true };
-  } catch (error) {
-    console.error("Error", error);
-    return { success: false, error };
-  }
+        console.log("Update Testimonial successfully ✅");
+        return { success: true };
+    } catch (error) {
+        console.error("Error", error);
+        return { success: false, error };
+    }
+};
+export const getTestimonial = async (id, tokenFromUrl) => {
+    try {
+        const snap = await getDoc(doc(db, "testimonials", id));
+
+        if (!snap.exists()) {
+            return { success: false, message: "التقييم غير موجود" };
+        }
+        const data = snap.data();
+        if (data.token !== tokenFromUrl) {
+            return { success: false, message: "توكن غير صحيح" };
+        }
+        if (data.status !== "pending") {
+            return { success: false, message: "تمت المعالجة مسبقاً" };
+        }
+        return { success: true, data };
+    } catch (error) {
+        console.error("Error", error);
+        return { success: false, error };
+    }
 };

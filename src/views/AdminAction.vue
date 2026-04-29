@@ -12,13 +12,14 @@
 </template>
 
 <script setup>
-import { updateTestimonial } from "@/services/testimonialService";
+import { updateTestimonial, getTestimonial } from "@/services/testimonialService";
 import { useRoute } from "vue-router";
 import { ref, onMounted } from "vue";
 
 const route = useRoute();
 
 const id = route.query.id?.trim();
+const tokenFromUrl = route.query.token?.trim();
 
 const type = route.path.includes("approve") ? "approve" : "reject";
 
@@ -27,8 +28,8 @@ const error = ref("");
 const success = ref("");
 
 const handleAction = async () => {
-  if (!id) {
-    error.value = "معرف غير موجود";
+  if (!id || !tokenFromUrl) {
+    error.value = "رابط غير صالح";
     return;
   }
 
@@ -37,6 +38,12 @@ const handleAction = async () => {
 
   try {
     const status = type === "approve" ? "approved" : "rejected";
+    const result = await getTestimonial(id, tokenFromUrl);
+
+    if (!result.success) {
+      error.value = result.message;
+      return;
+    }
     await updateTestimonial(status, id);
     success.value = type === "approve" ? "تمت الموافقة بنجاح" : "تم رفض التقييم";
   } catch (err) {
