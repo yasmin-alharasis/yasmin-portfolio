@@ -1,10 +1,10 @@
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc,doc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
 import emailjs from '@emailjs/browser';
 
 export const submitTestimonial = async (form) => {
     try {
-        const doc = await addDoc(collection(db, "testimonial"), {
+        const doc = await addDoc(collection(db, "testimonials"), {
             name: form.name,
             email: form.email,
             role: form.role,
@@ -74,4 +74,19 @@ export const submitTestimonial = async (form) => {
         console.error("Error", error);
         return { success: false, error };
     }
+};
+
+
+export const updateTestimonial = async (status, id) => {
+  try {
+    await updateDoc(doc(db, "testimonials", id), {
+      status: status,
+    });
+
+    console.log("Update Testimonial successfully ✅");
+    return { success: true };
+  } catch (error) {
+    console.error("Error", error);
+    return { success: false, error };
+  }
 };
