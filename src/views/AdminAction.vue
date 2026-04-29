@@ -5,6 +5,7 @@
     </h2>
 
     <p v-if="loading">جاري التنفيذ...</p>
+    <p>{{ id }}</p>
     <p v-if="error" class="error">{{ error }}</p>
     <p v-if="success" class="success">{{ success }}</p>
   </div>
