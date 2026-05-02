@@ -1,14 +1,14 @@
 export const generateToken = () => {
   return crypto.randomUUID();
 };
-export const formatDate = (timestamp) => {
-  if (!timestamp) return "";
+export const formatDate = (value) => {
+  if (!value) return "";
 
-  return timestamp
-    .toDate()
-    .toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
+  const date = value.toDate ? value.toDate() : new Date(value);
+
+  return date.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 };
