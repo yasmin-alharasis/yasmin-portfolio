@@ -16,20 +16,16 @@ const router = createRouter({
     }
   ],
 })
-router.beforeEach((to, from, next) => {
+router.beforeEach((to) => {
   const token = to.query.token;
 
   if (to.path.startsWith("/admin")) {
-    if (!token) {
-      return next("/unauthorized");
-    }
-
-    if (token.length < 10) {
-      return next("/unauthorized");
+    if (!token || token.length < 10) {
+      return "/unauthorized";
     }
   }
 
-  next();
+  return true;
 });
 
 export default router;

@@ -22,7 +22,6 @@ export const sendMessage = async (form) => {
             message: form.message,
             createdAt: serverTimestamp()
         });
-        console.log("Message + Email sent ✅");
         return { success: true };
     } catch (error) {
         console.error("Error", error);

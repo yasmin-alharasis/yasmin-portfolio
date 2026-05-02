@@ -1,7 +1,7 @@
-import { collection, addDoc, doc, updateDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc, getDoc, getDocs, query, where, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
 import emailjs from '@emailjs/browser';
-import { generateToken } from "@/utils/generateToken";
+import { generateToken, formatDate } from "@/utils/function";
 
 export const submitTestimonial = async (form) => {
     const token = generateToken();
@@ -17,7 +17,6 @@ export const submitTestimonial = async (form) => {
             createdAt: serverTimestamp(),
             token: token
         });
-        console.log('testimonial_id', doc.id);
         //send email to Receiver
         try {
             emailjs.send(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TESTIMONIAL_TEMPLATE_ID, {
@@ -76,7 +75,6 @@ export const submitTestimonial = async (form) => {
         } catch (error) {
             console.log('error to send email for reciver', error)
         }
-        console.log("Testimonial + Email sent ✅");
         return { success: true };
     } catch (error) {
         console.error("Error", error);
@@ -91,8 +89,6 @@ export const updateTestimonial = async (status, id) => {
             status: status,
             token: null,
         });
-
-        console.log("Update Testimonial successfully ✅");
         return { success: true };
     } catch (error) {
         console.error("Error", error);
@@ -116,6 +112,31 @@ export const getTestimonial = async (id, tokenFromUrl) => {
         return { success: true, data };
     } catch (error) {
         console.error("Error", error);
+        return { success: false, error };
+    }
+};
+export const getAcceptedTestimonials = async () => {
+    try {
+        const q = query(
+            collection(db, "testimonials"),
+            where("status", "==", "approved")
+        );
+
+        const snapshot = await getDocs(q);
+
+        const testimonials = snapshot.docs.map(doc => ({
+            id: doc.id,
+            name: doc.data().name,
+            testimonial: doc.data().testimonial,
+            date: formatDate(doc.data().createdAt),
+            role: doc.data().role,
+            company: doc.data().company,
+            rating: doc.data().rating,
+            status: doc.data().status,
+        }));
+
+        return { success: true, testimonials };
+    } catch (error) {
         return { success: false, error };
     }
 };
