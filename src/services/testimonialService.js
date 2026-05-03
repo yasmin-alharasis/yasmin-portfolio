@@ -6,13 +6,17 @@ import { generateToken, formatDate } from "@/utils/function";
 export const submitTestimonial = async (form) => {
     const token = generateToken();
     try {
-        const doc = await addDoc(collection(db, "testimonials"), {
+        const baseData = {
             name: form.name,
             email: form.email,
             role: form.role,
             company: form.company,
             rating: form.rating,
             testimonial: form.testimonial,
+
+        };
+        const doc = await addDoc(collection(db, "testimonials"), {
+            ...baseData,
             status: "pending",
             createdAt: serverTimestamp(),
             token: token
@@ -20,6 +24,7 @@ export const submitTestimonial = async (form) => {
         //send email to Receiver
         try {
             emailjs.send(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TESTIMONIAL_TEMPLATE_ID, {
+                ...baseData,
                 title: "📩 New Testimonial Received",
                 subtitle: "From your portfolio website",
                 intro: "You have received a new testimonial.",
@@ -28,13 +33,6 @@ export const submitTestimonial = async (form) => {
                 button_text: "View Portfolio",
                 footer_text: "This email was automatically sent from your portfolio form.",
                 is_admin: true,
-
-                name: form.name,
-                email: form.email,
-                role: form.role,
-                company: form.company,
-                rating: form.rating,
-                testimonial: form.testimonial,
                 date: formatDate(new Date()),
                 testimonial_id: doc.id,
                 to_email: import.meta.env.VITE_EMAIL,
@@ -51,6 +49,7 @@ export const submitTestimonial = async (form) => {
         // send email confirmation to sender
         try {
             emailjs.send(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TESTIMONIAL_TEMPLATE_ID, {
+                ...baseData,
                 title: "🙏 Thank You for Your Feedback!",
                 subtitle: "Your testimonial has been received",
                 intro: "We appreciate your feedback. Your testimonial is currently under review.",
@@ -58,12 +57,7 @@ export const submitTestimonial = async (form) => {
                 date_label: "Submitted at",
                 button_text: "Visit Portfolio",
                 footer_text: "Thank you for your support 💛",
-
                 is_admin: false,
-
-                name: form.name,
-                rating: form.rating,
-                testimonial: form.testimonial,
                 date: formatDate(new Date()),
                 to_email: form.email,
                 from_name: import.meta.env.VITE_NAME,
