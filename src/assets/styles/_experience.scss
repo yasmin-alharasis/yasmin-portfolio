@@ -63,7 +63,7 @@
       font-size: 1rem;
     }
     .type {
-      @include badge($bg: $light-gray, $color: $secondary);
+      @include badge($bg: $light-gray, $color: var(--text-color));
     }
     .duration {
       @include badge($bg: rgba($primary, 0.2), $color: $primary);
