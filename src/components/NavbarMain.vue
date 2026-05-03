@@ -45,10 +45,12 @@
   </button>
   <!-- mobile -->
   <ThemeButton variant="mobile" :theme="theme" @toggle="toggleTheme" />
+  <ViewCount />
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
 import ThemeButton from "@/components/ThemeButton.vue";
+import ViewCount from "@/components/ViewCount.vue";
 import { useScroll } from "@/composables/useScroll";
 import { useActiveSection } from "@/composables/useActiveSection";
 const isOpen = ref(false);
