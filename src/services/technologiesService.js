@@ -1,21 +1,22 @@
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
 import { db } from "@/firebase";
 
-export const getVisibleProjects = async () => {
+export const getVisibleTechnologies = async () => {
     try {
         const q = query(
-            collection(db, "projects"),
+            collection(db, "technologies"),
             where("visible", "==", true),
             orderBy("order", "asc")
         );
 
         const snapshot = await getDocs(q);
 
-        const projects = snapshot.docs.map(doc => ({
+        const technologies = snapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
         }));
-        return { success: true, projects };
+
+        return { success: true, technologies };
     } catch (error) {
         return { success: false, error };
     }

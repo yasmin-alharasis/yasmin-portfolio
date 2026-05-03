@@ -120,13 +120,9 @@ export const getAcceptedTestimonials = async () => {
 
         const testimonials = snapshot.docs.map(doc => ({
             id: doc.id,
-            name: doc.data().name,
-            testimonial: doc.data().testimonial,
+            ...doc.data(),
             date: formatDate(doc.data().createdAt),
-            role: doc.data().role,
-            company: doc.data().company,
-            rating: doc.data().rating,
-            status: doc.data().status,
+
         }));
 
         return { success: true, testimonials };

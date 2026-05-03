@@ -31,7 +31,7 @@
         <div class="col">
           <div class="title">Skills & Technologies</div>
           <hr />
-          <ul class="list" v-for="item in visibleTechnologies" :key="item">
+          <ul class="list" v-for="item in technologiesList" :key="item">
             <li v-if="item['visible']" class="card">
               <div class="line">
                 <font-awesome-icon :icon="['fas', 'code']" class="icon" />
@@ -66,8 +66,9 @@
   </section>
 </template>
 <script setup>
+import { getVisibleTechnologies } from "@/services/technologiesService";
 import SectionHeader from "./SectionHeader.vue";
-import { computed } from "vue";
+import { ref, onMounted } from "vue";
 const badgeTitle = "about me";
 const subtitle = "building digital solutions";
 const description =
@@ -80,26 +81,13 @@ const bringList = [
   "Clean & Maintainable Code",
   "Team Collaboration",
 ];
-const technologiesList = [
-  { name: "HTML", type: "Frontend", percentage: 95, visible: true },
-  { name: "CSS3 / SCSS", type: "Frontend", percentage: 85, visible: true },
-  { name: "Bootstrap", type: "Frontend", percentage: 50, visible: true },
-  { name: "JavaScript", type: "Frontend", percentage: 95, visible: true },
-  { name: "Vue", type: "Frontend", percentage: 95, visible: true },
-  { name: "TypeScript", type: "Frontend", percentage: 60, visible: false },
-  { name: "jQuery", type: "Frontend", percentage: 60, visible: false },
-
-  { name: "Node.js", type: "Backend", percentage: 90, visible: true },
-  { name: "NestJS", type: "Backend", percentage: 60, visible: false },
-  { name: "Express.js", type: "Backend", percentage: 70, visible: true },
-
-  { name: "Firebase", type: "Databases", percentage: 90, visible: true },
-  { name: "MongoDB", type: "Databases", percentage: 70, visible: true },
-  { name: "PostgreSQL", type: "Databases", percentage: 60, visible: true },
-];
-const visibleTechnologies = computed(() =>
-  technologiesList.filter((item) => item.visible)
-);
+const technologiesList = ref([]);
+onMounted(async () => {
+  const res = await getVisibleTechnologies();
+  if (res.success) {
+    technologiesList.value = res.technologies;
+  }
+});
 const counts = [
   {
     icon: { type: "fas", name: "award" },
