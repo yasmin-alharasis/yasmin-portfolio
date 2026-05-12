@@ -62,12 +62,13 @@
   padding: $padding-desktop;
 
   @include tablet {
+    @include flex($direction: column, $justify: center, $gap: 15px);
     padding: $padding-tablet;
   }
 
   @include mobile {
     padding: $padding-mobile;
-    @include flex($direction: column, $align: $align, $justify: center, $gap: 10px);
+    @include flex($direction: column, $align: $align, $justify: center, $gap: 18px);
   }
 }
 @mixin card($type: null, $mr: 15px 0, $pa: 10px, $icon-pa: 5px) {

@@ -1,13 +1,12 @@
 <template>
   <section class="hero" id="hero">
     <Badge :badgeTitle="badgeTitle" variant="custom" />
-    <h1 class="name">yasmin harasis</h1>
+    <h1 class="name">Hi, I'm Yasmin Alharasis</h1>
     <h2 class="subtitle">
-      Turning ideas into scalable, <span>high-quality software.</span>
+      Full-Stack Software Engineer crafting scalable and reliable web applications
     </h2>
     <p class="description">
-      Full-stack software engineer designing and developing modern, scalable applications
-      with clean architecture and exceptional user experiences.
+      With 3+ years of experience,I design and develop modern web solutions using Vue.js, Node.js, and robust backend systems, with a strong focus on performance, clean architecture, and seamless user experience.
     </p>
     <div class="actions">
       <button class="actions_primary" @click="scrollTo('projects')">

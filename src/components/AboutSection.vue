@@ -10,14 +10,17 @@
         <div class="title">My Journey</div>
         <hr />
         <div class="description">
-          I'm a full-stack developer with over 3 years of experience building web
-          applications using Vue.js, Node.js, and modern backend technologies. I focus on
-          developing responsive, reliable, and user-friendly systems.<br /><br />
-          Through my work, I’ve gained hands-on experience in building features, fixing
-          bugs, integrating third-party services, and improving application performance
-          and user experience.<br /><br />
-          I enjoy solving problems, learning new technologies, and working with teams to
-          deliver clean and maintainable code.
+          I'm a Full-Stack Software Engineer with over 3 years of professional experience
+          building and maintaining web applications and information systems.
+          <br/><br/>
+          I specialize in both frontend and backend development, working with modern technologies to
+          deliver secure, scalable, and user-friendly solutions. I have hands-on
+          experience in system integration, database design, debugging, and performance
+          optimization.
+          <br/><br/>
+          I’ve worked in Agile environments, collaborating with teams to
+          deliver high-quality software on time while continuously improving system
+          reliability and user experience.
         </div>
         <div class="list-title">What I Bring</div>
         <ul class="list">
@@ -75,9 +78,10 @@ const description =
   "passionate about creating reliable and user-friendly applications through clean and maintainable code";
 const bringList = [
   "Full-Stack Development (Vue.js & Node.js)",
+  "API Integration & Performance Optimization",
+  "Payment Gateway Integration & Transaction Processing",
   "Problem Solving & Debugging",
   "Agile Development (Scrum)",
-  "API Integration & Performance Optimization",
   "Clean & Maintainable Code",
   "Team Collaboration",
 ];
