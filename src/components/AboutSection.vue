@@ -10,17 +10,15 @@
         <div class="title">My Journey</div>
         <hr />
         <div class="description">
-          I'm a Full-Stack Software Engineer with over 3 years of professional experience
-          building and maintaining web applications and information systems.
-          <br/><br/>
-          I specialize in both frontend and backend development, working with modern technologies to
-          deliver secure, scalable, and user-friendly solutions. I have hands-on
-          experience in system integration, database design, debugging, and performance
-          optimization.
-          <br/><br/>
-          I’ve worked in Agile environments, collaborating with teams to
-          deliver high-quality software on time while continuously improving system
-          reliability and user experience.
+          Software Engineer with experience developing full-stack platforms, analytics
+          dashboards, and enterprise systems across frontend and backend environments.
+          Worked on production-ready solutions involving payment processing, third-party
+          API integrations, reporting systems, and real-time data management using
+          technologies such as Vue.js, Node.js, Firebase, and BigQuery.
+          <br /><br />
+          I enjoy transforming complex requirements into clean, efficient, and
+          user-focused solutions while continuously improving system reliability,
+          maintainability, and overall user experience.
         </div>
         <div class="list-title">What I Bring</div>
         <ul class="list">
@@ -77,13 +75,13 @@ const subtitle = "building digital solutions";
 const description =
   "passionate about creating reliable and user-friendly applications through clean and maintainable code";
 const bringList = [
-  "Full-Stack Development (Vue.js & Node.js)",
-  "API Integration & Performance Optimization",
-  "Payment Gateway Integration & Transaction Processing",
-  "Problem Solving & Debugging",
-  "Agile Development (Scrum)",
-  "Clean & Maintainable Code",
-  "Team Collaboration",
+  "Full-Stack Development with Vue.js & Node.js",
+  "Payment Gateway & Third-Party API Integration",
+  "Dashboard & Analytics Systems",
+  "Performance Optimization & Debugging",
+  "Firebase & Database Management",
+  "Clean, Maintainable Code Practices",
+  "Agile Team Collaboration",
 ];
 const technologiesList = ref([]);
 onMounted(async () => {

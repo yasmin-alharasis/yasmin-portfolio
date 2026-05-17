@@ -3,10 +3,13 @@
     <Badge :badgeTitle="badgeTitle" variant="custom" />
     <h1 class="name">Hi, I'm Yasmin Alharasis</h1>
     <h2 class="subtitle">
-      Full-Stack Software Engineer crafting scalable and reliable web applications
+      Full-Stack Software Engineer focused on building reliable digital products and
+      seamless user experiences.
     </h2>
     <p class="description">
-      With 3+ years of experience,I design and develop modern web solutions using Vue.js, Node.js, and robust backend systems, with a strong focus on performance, clean architecture, and seamless user experience.
+      With 3+ years of experience, I specialize in frontend and backend engineering using
+      Vue.js, Node.js, Firebase, and modern JavaScript technologies to create scalable
+      platforms, payment systems, and data-driven solutions.
     </p>
     <div class="actions">
       <button class="actions_primary" @click="scrollTo('projects')">
