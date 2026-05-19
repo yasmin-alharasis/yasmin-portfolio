@@ -54,7 +54,7 @@
 </template>
 <script setup>
 import { getVisibleProjects } from "@/services/projectsService";
-import { ref,onMounted, computed } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useScroll } from "@/composables/useScroll";
 import SectionHeader from "./SectionHeader.vue";
 import ProjectCard from "./ProjectCard.vue";
@@ -64,14 +64,14 @@ const activeLayout = ref("grid");
 const badgeTitle = "featured work";
 const subtitle = "Projects & Case Studies";
 const description = "A showcase of my recent work, from concept to deployment";
-const filters = ["all", "web", "mobile", "full-stack"];
+const filters = ["all", "full-stack", "web", "mobile"];
 const layout = [
   { name: "grid", icon: "table-cells", type: "fas" },
   { name: "flex", icon: "list", type: "fas" },
 ];
 const projects = ref([]);
 onMounted(async () => {
-   const res = await getVisibleProjects();
+  const res = await getVisibleProjects();
 
   if (res.success) {
     projects.value = res.projects;
