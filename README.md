@@ -1,44 +1,83 @@
-# portfolio
+# Yasmin Al-Harasis Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern and responsive personal portfolio website built to showcase my projects, technical skills, and professional experience as a Software Engineer and Full-Stack Web Developer.
 
-## Recommended IDE Setup
+## 🌐 Live Demo
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[https://yasmin-harasis-portfolio.netlify.app/](https://yasmin-harasis-portfolio.netlify.app/)
 
-## Recommended Browser Setup
+---
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## ✨ Features
 
-## Customize configuration
+* Modern and responsive UI design
+* Smooth navigation and clean layout
+* Projects showcase section
+* Skills and technologies section
+* About and experience section
+* Contact form integration using EmailJS
+* Testimonials section for showcasing client/user feedback
+* Firebase database integration for dynamic data management
+* Optimized for desktop, tablet, and mobile devices
+* Reusable and structured component-based architecture
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
 
-## Project Setup
+## 🛠️ Built With
 
-```sh
+* Vue.js
+* Vite
+* SCSS
+* Firebase
+* EmailJS
+* JavaScript (ES6+)
+
+---
+
+## 🎯 Purpose
+
+This portfolio was built to present my professional experience, technical skills, and frontend/full-stack projects in a modern and user-friendly way while practicing clean architecture, responsive design, and performance-focused development.
+
+---
+
+## 📸 Preview
+
+![Portfolio Preview](./public/preview.png)
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yasmin-alharasis/yasmin-portfolio.git
+```
+
+Install dependencies:
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Run the development server:
 
-```sh
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+Build for production:
 
-```sh
+```bash
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+---
 
-```sh
-npm run lint
-```
+## 👩‍💻 Author
+
+Yasmin Al-Harasis
+
+* Portfolio: [https://yasmin-harasis-portfolio.netlify.app/](https://yasmin-harasis-portfolio.netlify.app/)
+* GitHub: [https://github.com/yasmin-alharasis](https://github.com/yasmin-alharasis)
+* LinkedIn: [https://linkedin.com/in/yasmin-al-harasis](https://linkedin.com/in/yasmin-al-harasis)
