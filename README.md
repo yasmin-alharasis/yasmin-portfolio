@@ -17,6 +17,9 @@ A modern and responsive personal portfolio website built to showcase my projects
 * About and experience section
 * Contact form integration using EmailJS
 * Testimonials section for showcasing client/user feedback
+* Contact and testimonial forms integrated with EmailJS
+* Custom email templates for both sender and receiver notifications
+* Testimonial approval/rejection workflow with admin action buttons
 * Firebase database integration for dynamic data management
 * Optimized for desktop, tablet, and mobile devices
 * Reusable and structured component-based architecture
