@@ -4,36 +4,36 @@ A modern and responsive personal portfolio website built to showcase my projects
 
 ## 🌐 Live Demo
 
-[https://yasmin-alharasis-portfolio.netlify.app/](https://yasmin-alharasis-portfolio.netlify.app/)
+[https://yasmin-harasis-portfolio.netlify.app/](https://yasmin-harasis-portfolio.netlify.app/)
 
 ---
 
 ## ✨ Features
 
-* Modern and responsive UI design
-* Smooth navigation and clean layout
-* Projects showcase section
-* Skills and technologies section
-* About and experience section
-* Contact form integration using EmailJS
-* Testimonials section for showcasing client/user feedback
-* Contact and testimonial forms integrated with EmailJS
-* Custom email templates for both sender and receiver notifications
-* Testimonial approval/rejection workflow with admin action buttons
-* Firebase database integration for dynamic data management
-* Optimized for desktop, tablet, and mobile devices
-* Reusable and structured component-based architecture
+- Modern and responsive UI design
+- Smooth navigation and clean layout
+- Projects showcase section
+- Skills and technologies section
+- About and experience section
+- Contact form integration using EmailJS
+- Testimonials section for showcasing client/user feedback
+- Contact and testimonial forms integrated with EmailJS
+- Custom email templates for both sender and receiver notifications
+- Testimonial approval/rejection workflow with admin action buttons
+- Firebase database integration for dynamic data management
+- Optimized for desktop, tablet, and mobile devices
+- Reusable and structured component-based architecture
 
 ---
 
 ## 🛠️ Built With
 
-* Vue.js
-* Vite
-* SCSS
-* Firebase
-* EmailJS
-* JavaScript (ES6+)
+- Vue.js
+- Vite
+- SCSS
+- Firebase
+- EmailJS
+- JavaScript (ES6+)
 
 ---
 
@@ -81,6 +81,6 @@ npm run build
 
 Yasmin Al-Harasis
 
-* Portfolio: [https://yasmin-alharasis-portfolio.netlify.app/](https://yasmin-alharasis-portfolio.netlify.app/)
-* GitHub: [https://github.com/yasmin-alharasis](https://github.com/yasmin-alharasis)
-* LinkedIn: [https://linkedin.com/in/yasmin-al-harasis](https://linkedin.com/in/yasmin-al-harasis)
+- Portfolio: [https://yasmin-harasis-portfolio.netlify.app/](https://yasmin-harasis-portfolio.netlify.app/)
+- GitHub: [https://github.com/yasmin-alharasis](https://github.com/yasmin-alharasis)
+- LinkedIn: [https://linkedin.com/in/yasmin-al-harasis](https://linkedin.com/in/yasmin-al-harasis)
