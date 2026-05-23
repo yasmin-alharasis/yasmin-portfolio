@@ -4,7 +4,7 @@ A modern and responsive personal portfolio website built to showcase my projects
 
 ## 🌐 Live Demo
 
-[https://yasmin-harasis-portfolio.netlify.app/](https://yasmin-harasis-portfolio.netlify.app/)
+[https://yasmin-alharasis-portfolio.netlify.app/](https://yasmin-alharasis-portfolio.netlify.app/)
 
 ---
 
@@ -81,6 +81,6 @@ npm run build
 
 Yasmin Al-Harasis
 
-* Portfolio: [https://yasmin-harasis-portfolio.netlify.app/](https://yasmin-harasis-portfolio.netlify.app/)
+* Portfolio: [https://yasmin-alharasis-portfolio.netlify.app/](https://yasmin-alharasis-portfolio.netlify.app/)
 * GitHub: [https://github.com/yasmin-alharasis](https://github.com/yasmin-alharasis)
 * LinkedIn: [https://linkedin.com/in/yasmin-al-harasis](https://linkedin.com/in/yasmin-al-harasis)
