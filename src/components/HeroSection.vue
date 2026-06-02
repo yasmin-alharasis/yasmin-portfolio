@@ -1,7 +1,7 @@
 <template>
   <section class="hero" id="hero">
     <Badge :badgeTitle="badgeTitle" variant="custom" />
-    <h1 class="name">Hi, I'm Yasmin Alharasis</h1>
+    <h1 class="name">Hi, I'm Yasmin Al-harasis</h1>
     <h2 class="subtitle">
       Full-Stack Software Engineer focused on building reliable digital products and
       seamless user experiences.
