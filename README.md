@@ -45,7 +45,7 @@ This portfolio was built to present my professional experience, technical skills
 
 ## 📸 Preview
 
-![Portfolio Preview](./public/preview.png)
+![Portfolio Preview](https://res.cloudinary.com/nrzc9jku/image/upload/portfolio-preview.png)
 
 ---
 
