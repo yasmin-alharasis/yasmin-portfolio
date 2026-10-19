@@ -21,7 +21,7 @@
 
       <div class="line">
         <div class="links">
-          <a :href="project.demoLink" target="_blank" class="demo">
+          <a v-if="project.demoLink" :href="project.demoLink" target="_blank" class="demo">
             <font-awesome-icon :icon="['fas', 'arrow-up-right-from-square']" />
             live demo
           </a>

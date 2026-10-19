@@ -64,7 +64,7 @@ const activeLayout = ref("grid");
 const badgeTitle = "featured work";
 const subtitle = "Projects & Case Studies";
 const description = "A showcase of my recent work, from concept to deployment";
-const filters = ["all", "full-stack", "web", "mobile"];
+const filters = ["all", "full-stack", "front-end","back-end", "mobile"];
 const layout = [
   { name: "grid", icon: "table-cells", type: "fas" },
   { name: "flex", icon: "list", type: "fas" },
